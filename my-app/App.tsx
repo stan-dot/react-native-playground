@@ -18,7 +18,7 @@ export default function App() {
       <Button title="Tap me" /> */}
       {/* <Text>Open up App.tsx to start working on your app!</Text> */}
       {/* <StatusBar style="auto" /> */}
-      <ThreeBoxes />
+      {/* <ThreeBoxes /> */}
     </View>
   );
 }

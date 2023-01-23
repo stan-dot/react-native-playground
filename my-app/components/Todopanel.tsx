@@ -9,7 +9,7 @@ export default function Todopanel() {
       <TextInput placeholder="your course goal!" style={styles.textInput} />
       <Button title="Add goal" />
     </View>
-    <View>
+    <View style={styles.goalsContainer}>
       <Text>
         List of goals
       </Text>
@@ -18,19 +18,29 @@ export default function Todopanel() {
 }
 
 const styles = StyleSheet.create({
-
   appContainer: {
-    padding: 50
-
+    padding: 50,
+    paddingHorizontal: 16,
+    flex: 1
   },
+
   inputContainer: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cccccc'
   },
+
   textInput: {
     borderWidth: 1,
     borderColor: '#cccccc',
-    width: '80%'
+    width: '70%'
+  },
+
+  goalsContainer: {
+    flex: 3
   }
 })
