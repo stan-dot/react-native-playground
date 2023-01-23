@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 
 export type GoalItemType = {
   text: string;
@@ -10,15 +10,15 @@ export function GoalItem(
 ) {
   // this is wrapped as for iOS Text does not support rounded corners
   return (
-    <Pressable
-      onPress={() => props.onDeleteItem(props.item.id)}
-      android_ripple={{ color: "#5e0acc" }}
-      style={({ pressed }) => pressed && styles.pressedItem}
-    >
-      <View style={styles.goalItem}>
-        <Text style={styles.goalText}>{props.item.text}</Text>
-      </View>
-    </Pressable>
+      <Pressable
+        onPress={() => props.onDeleteItem(props.item.id)}
+        android_ripple={{ color: "#5e0acc" }}
+        style={({ pressed }) => pressed && styles.pressedItem}
+      >
+        <View style={styles.goalItem}>
+          <Text style={styles.goalText}>{props.item.text}</Text>
+        </View>
+      </Pressable>
   );
 }
 

@@ -1,10 +1,15 @@
 import { useState } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { Button, FlatList, StyleSheet, View } from "react-native";
 import { GoalInputField } from "./GoalInputField";
 import { GoalItem, GoalItemType } from "./GoalItem";
 
 export default function Todopanel() {
   const [courseGoals, setCourseGoals] = useState([] as GoalItemType[]);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+
+  function startAddGoalHandler() {
+    setModalIsVisible(true);
+  }
 
   function addGoalHandler(text: string) {
     const item: GoalItemType = {
@@ -14,6 +19,7 @@ export default function Todopanel() {
     setCourseGoals(
       (currentCourseGoals) => [...currentCourseGoals, item],
     );
+    endAddGoalHander();
   }
 
   function deleteGoalHandler(id: string) {
@@ -22,10 +28,22 @@ export default function Todopanel() {
     });
   }
 
+  function endAddGoalHander() {
+    setModalIsVisible(false);
+  }
+
   return (
     <View style={styles.appContainer}>
+      <Button
+        title="Add new goal"
+        color="#5e0acc"
+        onPress={startAddGoalHandler}
+      />
+
       <GoalInputField
         onSubmit={addGoalHandler}
+        visible={modalIsVisible}
+        onCancel={endAddGoalHander}
       />
       <View style={styles.goalsContainer}>
         <FlatList
