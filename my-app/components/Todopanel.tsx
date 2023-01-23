@@ -1,22 +1,25 @@
 import { useState } from "react";
-import {
-  FlatList, StyleSheet,
-  View
-} from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import { GoalInputField } from "./GoalInputField";
 import { GoalItem, GoalItemType } from "./GoalItem";
 
 export default function Todopanel() {
   const [courseGoals, setCourseGoals] = useState([] as GoalItemType[]);
 
-  function addGoalHandler(text:string) {
+  function addGoalHandler(text: string) {
     const item: GoalItemType = {
       text: text,
-      key: Math.random().toString(),
+      id: Math.random().toString(),
     };
     setCourseGoals(
       (currentCourseGoals) => [...currentCourseGoals, item],
     );
+  }
+
+  function deleteGoalHandler(id: string) {
+    setCourseGoals((currentGoals) => {
+      return currentGoals.filter((item: GoalItemType) => item.id !== id);
+    });
   }
 
   return (
@@ -28,10 +31,12 @@ export default function Todopanel() {
         <FlatList
           data={courseGoals}
           alwaysBounceVertical={false}
-          // keyExtractor={(item, index) => item.id} // if using API and ID not key
+          keyExtractor={(item, index) => item.id} // if using API and ID not key
           renderItem={(itemData) => {
             // scrollview renders everything, not smart for 1000s of items
-            return <GoalItem item={itemData.item} />
+            return (
+              <GoalItem item={itemData.item} onDeleteItem={deleteGoalHandler} />
+            );
           }}
         />
       </View>
@@ -50,5 +55,3 @@ const styles = StyleSheet.create({
     flex: 3,
   },
 });
-
-
