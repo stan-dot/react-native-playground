@@ -1,46 +1,54 @@
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
-
+import { useState } from "react";
+import {
+  FlatList, StyleSheet,
+  View
+} from "react-native";
+import { GoalInputField } from "./GoalInputField";
+import { GoalItem, GoalItemType } from "./GoalItem";
 
 export default function Todopanel() {
+  const [courseGoals, setCourseGoals] = useState([] as GoalItemType[]);
 
+  function addGoalHandler(text:string) {
+    const item: GoalItemType = {
+      text: text,
+      key: Math.random().toString(),
+    };
+    setCourseGoals(
+      (currentCourseGoals) => [...currentCourseGoals, item],
+    );
+  }
 
-  return <View style={styles.appContainer}>
-    <View style={styles.inputContainer}>
-      <TextInput placeholder="your course goal!" style={styles.textInput} />
-      <Button title="Add goal" />
+  return (
+    <View style={styles.appContainer}>
+      <GoalInputField
+        onSubmit={addGoalHandler}
+      />
+      <View style={styles.goalsContainer}>
+        <FlatList
+          data={courseGoals}
+          alwaysBounceVertical={false}
+          // keyExtractor={(item, index) => item.id} // if using API and ID not key
+          renderItem={(itemData) => {
+            // scrollview renders everything, not smart for 1000s of items
+            return <GoalItem item={itemData.item} />
+          }}
+        />
+      </View>
     </View>
-    <View style={styles.goalsContainer}>
-      <Text>
-        List of goals
-      </Text>
-    </View>
-  </View>
+  );
 }
 
 const styles = StyleSheet.create({
   appContainer: {
     padding: 50,
     paddingHorizontal: 16,
-    flex: 1
-  },
-
-  inputContainer: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#cccccc'
-  },
-
-  textInput: {
-    borderWidth: 1,
-    borderColor: '#cccccc',
-    width: '70%'
   },
 
   goalsContainer: {
-    flex: 3
-  }
-})
+    flex: 3,
+  },
+});
+
+
