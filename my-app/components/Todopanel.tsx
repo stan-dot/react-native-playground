@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, FlatList, StyleSheet, View } from "react-native";
+import { Button, FlatList, StyleSheet, View, StatusBar } from "react-native";
 import { GoalInputField } from "./GoalInputField";
 import { GoalItem, GoalItemType } from "./GoalItem";
 
@@ -33,32 +33,35 @@ export default function Todopanel() {
   }
 
   return (
-    <View style={styles.appContainer}>
-      <Button
-        title="Add new goal"
-        color="#5e0acc"
-        onPress={startAddGoalHandler}
-      />
-
-      <GoalInputField
-        onSubmit={addGoalHandler}
-        visible={modalIsVisible}
-        onCancel={endAddGoalHander}
-      />
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={courseGoals}
-          alwaysBounceVertical={false}
-          keyExtractor={(item, index) => item.id} // if using API and ID not key
-          renderItem={(itemData) => {
-            // scrollview renders everything, not smart for 1000s of items
-            return (
-              <GoalItem item={itemData.item} onDeleteItem={deleteGoalHandler} />
-            );
-          }}
+    <>
+      <StatusBar barStyle="light-content" />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add new goal"
+          color="#a065ec"
+          onPress={startAddGoalHandler}
         />
+
+        <GoalInputField
+          onSubmit={addGoalHandler}
+          visible={modalIsVisible}
+          onCancel={endAddGoalHander}
+        />
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={courseGoals}
+            alwaysBounceVertical={false}
+            keyExtractor={(item, index) => item.id} // if using API and ID not key
+            renderItem={(itemData) => {
+              // scrollview renders everything, not smart for 1000s of items
+              return (
+                <GoalItem item={itemData.item} onDeleteItem={deleteGoalHandler} />
+              );
+            }}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
     padding: 50,
     paddingHorizontal: 16,
     flex: 1,
+    backgroundColor: "#1e085a"
   },
 
   goalsContainer: {

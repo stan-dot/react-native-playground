@@ -42,13 +42,14 @@ export function GoalInputField(
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
+            <Button title="Cancel" onPress={props.onCancel} color="#f31282" />
+          </View>
+          <View style={styles.button}>
             <Button
               title="Add goal"
               onPress={onButtonPress}
+              color="#b180f0"
             />
-          </View>
-          <View style={styles.button}>
-            <Button title="Cancel" onPress={props.onCancel} />
           </View>
         </View>
       </View>
@@ -67,10 +68,13 @@ const styles = StyleSheet.create({
 
   textInput: {
     borderWidth: 1,
-    borderColor: "#cccccc",
+    borderColor: "#e4d0ff",
+    backgroundColor: "#e4d0ff",
+    color: "#12038",
+    borderRadius: 6,
     width: "70%",
     marginRight: 8,
-    padding: 8,
+    padding: 16,
   },
   buttonContainer: {
     flexDirection: "row",
