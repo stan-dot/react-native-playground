@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { HomeScreen } from './screens/HomeScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import "./tailwind.css";
+// todo comment on this line being problematic
 
 const Stack = createNativeStackNavigator();
 

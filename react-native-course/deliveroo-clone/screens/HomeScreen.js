@@ -2,6 +2,8 @@ import { useNavigation } from '@react-navigation/core';
 import { styled } from 'nativewind';
 import { SafeAreaView, Image, Text, View } from 'react-native';
 import { useLayoutEffect } from 'react';
+import { ChevronDownIcon, UserIcon, SearchIcon, AdjustmentsIcon, SparklesIcon as SparklesIconOutline } from 'react-native-heroicons/outline';
+
 
 const StyledText = styled(Text)
 
@@ -23,8 +25,11 @@ export function HomeScreen() {
           className="h-7 w-7 bg-gray-300 p-4 rounded-full"
         />
         <View>
+          <SparklesIconOutline />
           <StyledText className="font-bold text-gray-400 text-xs">Deliver now!</StyledText>
-          <StyledText className="font-bold text-xl">Current location</StyledText>
+          <StyledText className="font-bold text-xl">Current location
+            <ChevronDownIcon size={20} color="#00CCBB" />
+          </StyledText>
         </View>
       </View>
     </SafeAreaView>
