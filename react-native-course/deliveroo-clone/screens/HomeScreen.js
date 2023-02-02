@@ -4,10 +4,10 @@ import { StatusBar, Text, View } from 'react-native';
 const StyledText = styled(Text)
 
 export function HomeScreen() {
-  return <View className="flex justify-center text-red-500 " >
+  return <View className="flex justify-center  " >
     <StatusBar style="auto" />
-    <Text>Home screen</Text>
-    <StyledText className="text-slate-800">
+    <Text className="text-red-500">Home screen</Text>
+    <StyledText className="text-cyan-800 text-3xl">
       Try editing me! 🎉
     </StyledText>
   </View >
