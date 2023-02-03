@@ -4,6 +4,8 @@ import { SafeAreaView, Image, Text, View, TextInput, ScrollView } from 'react-na
 import { useLayoutEffect } from 'react';
 import { ChevronDownIcon, UserIcon, SparklesIcon as SparklesIconOutline } from 'react-native-heroicons/outline';
 import { AdjustmentsVerticalIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
+import Categories from '../components/Categories';
+import FeaturedRow from '../components/FeaturedRow';
 
 
 const StyledText = styled(Text)
@@ -17,39 +19,67 @@ export function HomeScreen() {
     });
   }, [])
 
-  return <SafeAreaView className="bg-white pt-5">
-    <Text className="text-red-500">
-      {/* Header*/}
-      <View className="flex-row pb-3 items-center mx-4 space-x-2 px-2">
-        <Image source={{ url: 'https://links.papareact.com/wru' }}
-          className="h-7 w-7 bg-gray-300 p-4 rounded-full"
-        />
-        <View className={"flex-1"}>
-          <SparklesIconOutline />
-          <StyledText className="font-bold text-gray-400 text-xs">Deliver now!</StyledText>
-          <StyledText className="font-bold text-xl">Current location
-            <ChevronDownIcon size={20} color="#00CCBB" />
-          </StyledText>
-        </View>
-        <UserIcon size={35} color="#00CCBB" />
+  return <SafeAreaView className="bg-white pt-5 flex-col">
+    {/* Header*/}
+    <View className="flex-row pb-3 items-center mx-4 space-x-2 px-2">
+      <Image source={{ url: 'https://picsum.photos/id/1/200/300' }}
+        style={{
+          width: "7",
+          height: "7"
+        }}
+        className="bg-gray-300 p-4 rounded-full"
+      />
+      <View className={"flex-1"}>
+        <SparklesIconOutline />
+        <StyledText className="font-bold text-gray-400 text-xs">Deliver now!</StyledText>
+        <StyledText className="font-bold text-xl">Current location
+          <ChevronDownIcon size={20} color="#00CCBB" />
+        </StyledText>
       </View>
-    </Text>
+      <UserIcon size={35} color="#00CCBB" />
+    </View>
 
     {/* Search */}
-    <View className="flex-row items-center space-x-2 pb-2 mx-4  px-4">
+    <View className="flex-row items-center space-x-2 pb-2 mx-4 ">
       <View className="flex flex-row flex-1 space-x-2 bg-gray-200 p-3">
         <MagnifyingGlassIcon color={'gray'} size={20} />
         <TextInput placeholder='Restaurants and cuisines' keyboardType='default' />
-
       </View>
       <AdjustmentsVerticalIcon color="#00CCBB" />
     </View>
 
     {/* Body */}
-    <ScrollView>
+    <ScrollView className="bg-gray-100 flex-1"
+      contentContainerStyle={{
+        paddingBottom: 100
+      }}
+    >
       {/* Categories */}
-      {/* Featured Rows*/}
+      <Categories />
 
+      {/* Featured*/}
+      <FeaturedRow
+        id={0}
+        title="Featured"
+        description="Paid placements from our partners"
+        featuredCategory="featured"
+      />
+
+      {/*Tasty Discounts*/}
+      <FeaturedRow
+        id={1}
+        title="Tasty Discounts"
+        description="Eveyone's been enjoying these juicy discounts!"
+        featuredCategory="discounts"
+      />
+
+      {/*Offers near you*/}
+      <FeaturedRow
+        id={2}
+        title="Offers near you!"
+        description="Why not support your local restaurant tonight!"
+        featuredCategory="offers"
+      />
     </ScrollView>
 
   </SafeAreaView>
