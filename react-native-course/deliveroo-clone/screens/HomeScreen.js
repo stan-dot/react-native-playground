@@ -1,23 +1,47 @@
 import { useNavigation } from '@react-navigation/core';
 import { styled } from 'nativewind';
 import { SafeAreaView, Image, Text, View, TextInput, ScrollView } from 'react-native';
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useState, useEffect } from 'react';
 import { ChevronDownIcon, UserIcon, SparklesIcon as SparklesIconOutline } from 'react-native-heroicons/outline';
 import { AdjustmentsVerticalIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 
+import { sanityClient } from "../sanity";
 
 const StyledText = styled(Text)
 
 export function HomeScreen() {
   const navigation = useNavigation();
+  const [featuredCategories, setFeaturedCategories] = useState([]);
+
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
       // headerTitle: "TESTING",
     });
   }, [])
+
+
+  useEffect(() => {
+    sanityClient.fetch(`
+    *[_type == "featured"]{
+      ...,
+      restaurants[]->{
+        ...,
+        dishes[]->{
+          type->{name}
+        }
+      }
+    }
+    `).then(data => {
+      setFeaturedCategories(data);
+    });
+  }, [])
+
+  // console.log(featuredCategories);
+
 
   return <SafeAreaView className="bg-white pt-5 flex-col">
     {/* Header*/}
@@ -58,12 +82,15 @@ export function HomeScreen() {
       <Categories />
 
       {/* Featured*/}
-      <FeaturedRow
-        id={0}
-        title="Featured"
-        description="Paid placements from our partners"
-        featuredCategory="featured"
-      />
+      {featuredCategories?.map(category => {
+        return <FeaturedRow
+          id={category.id}
+          title={category.title}
+          description={category.short_description}
+          featuredCategory={category.featuredCategory}
+
+        />
+      })}
 
       {/*Tasty Discounts*/}
       <FeaturedRow

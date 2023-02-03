@@ -1,9 +1,29 @@
-import { View, Text, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, ScrollView, fetch } from 'react-native'
+import React, {useEffect, useState} from 'react'
 import { ArrowRightIcon } from 'react-native-heroicons/outline'
 import RestaurantCard from './RestaurantCard'
+import { sanityClient } from "../sanity";
 
 const FeaturedRow = ({ id, title, description, featuredCategory }) => {
+  const [restaurants, setRestaurant] = useState([]);
+
+  useEffect(() => {
+    sanityClient.fetch(`
+        *[_type == "featured" && _id ==$id]{
+          ...,
+          restaurants[]->{
+            ...,
+            dishes[]->{
+              type->{name}
+            }
+          }
+        }`,
+      { id }).then(data => {
+        setRestaurant(data?.restaurants);
+      })
+  }, []);
+
+
   return (
     <View>
       <View className="mt-4 flew-row items-center justify-between px-4">
@@ -24,44 +44,21 @@ const FeaturedRow = ({ id, title, description, featuredCategory }) => {
         horizontal>
 
         {/* Restaurant Cards */}
-        <RestaurantCard
-          id={123}
-          imgUrl={"https://picsum.photos/id/237/200/300"}
-          title={"Yo! Sushi"}
-          rating={4.5}
-          genre={"Japanese"}
-          address={"123 Main St"}
-          short_description={"This is a Test description"}
-          dishes={[]}
-          long={20}
-          lat={0}
-        />
-
-        <RestaurantCard
-          id={123}
-          imgUrl={"https://picsum.photos/id/237/200/300"}
-          title={"Yo! Sushi"}
-          rating={4.5}
-          genre={"Japanese"}
-          address={"123 Main St"}
-          short_description={"This is a Test description"}
-          dishes={[]}
-          long={20}
-          lat={0}
-        />
-
-        <RestaurantCard
-          id={123}
-          imgUrl={"https://picsum.photos/200/300"}
-          title={"Yo! Sushi"}
-          rating={4.5}
-          genre={"Japanese"}
-          address={"123 Main St"}
-          short_description={"This is a Test description"}
-          dishes={[]}
-          long={20}
-          lat={0}
-        />
+        {restaurants?.map(restaurant => {
+          return <RestaurantCard
+            id={restaurant.id}
+            imgUrl={restaurant.imgUrl}
+            title={restaurant.name}
+            rating={restaurant.rating}
+            genre={restaurant.type?.genre}
+            address={restaurant.address}
+            short_description={restaurant.short_description}
+            dishes={restaurant.dishes}
+            long={restaurant.long}
+            lat={restaurant.lat}
+          />
+        })
+        }
       </ScrollView>
     </View>
   )
