@@ -7,7 +7,8 @@ import { AdjustmentsVerticalIcon, MagnifyingGlassIcon } from 'react-native-heroi
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 
-import { sanityClient } from "../sanity";
+// import { sanityClient } from "../sanity";
+import { sanityClient } from "../App";
 
 const StyledText = styled(Text)
 

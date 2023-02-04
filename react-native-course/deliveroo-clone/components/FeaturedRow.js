@@ -1,8 +1,9 @@
-import { View, Text, ScrollView, fetch } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import { ArrowRightIcon } from 'react-native-heroicons/outline'
 import RestaurantCard from './RestaurantCard'
-import { sanityClient } from "../sanity";
+// import { sanityClient } from "../sanity";
+import { sanityClient } from "../App";
 
 const FeaturedRow = ({ id, title, description, featuredCategory }) => {
   const [restaurants, setRestaurant] = useState([]);
