@@ -1,9 +1,26 @@
-module.exports = [
+export type DemoProfile = {
+
+		id:number,
+		name:string,
+		status:string,
+		match:number,
+		description:string,
+		message:string,
+		info1?:string,
+		info2?:string,
+		info3?:string,
+		info4?:string,
+		image:any
+		age?:number,
+		location?:string,
+}
+
+export const Demo:DemoProfile[] = [
 	{
 		id: 1,
 		name: 'Leanne Graham',
 		status: 'Online',
-		match: '78',
+		match: 78,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		message:
@@ -13,7 +30,7 @@ module.exports = [
 	{
 		id: 2,
 		name: 'Clementine Bauch',
-		match: '93',
+		match: 93,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		status: 'Offline',
@@ -23,7 +40,7 @@ module.exports = [
 	{
 		id: 3,
 		name: 'Ervin Howell',
-		match: '45',
+		match: 45,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		status: 'Offline',
@@ -34,7 +51,7 @@ module.exports = [
 	{
 		id: 4,
 		name: 'John Lebsack',
-		match: '88',
+		match: 88,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		status: 'Online',
@@ -44,7 +61,7 @@ module.exports = [
 	{
 		id: 5,
 		name: 'James Dietrich',
-		match: '76',
+		match: 76,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		status: 'Offline',
@@ -54,7 +71,7 @@ module.exports = [
 	{
 		id: 6,
 		name: 'Patricia Schulist',
-		match: '95',
+		match: 95,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		status: 'Online',
@@ -65,7 +82,7 @@ module.exports = [
 	{
 		id: 7,
 		name: 'Chelsey Weissnat',
-		match: '67',
+		match: 67,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		status: 'Online',
@@ -76,10 +93,10 @@ module.exports = [
 	{
 		id: 8,
 		name: 'Nicky Runol',
-		match: '85',
+		match: 85,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
-		age: '27',
+		age: 27,
 		location: 'Irvine, CA',
 		info1: 'Straight, Single, 5"10',
 		info2: 'Tea Totaller, Loves Photography & Travel',
@@ -93,7 +110,7 @@ module.exports = [
 	{
 		id: 9,
 		name: 'Glenna Reichert',
-		match: '74',
+		match: 74,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		status: 'Online',
@@ -104,7 +121,7 @@ module.exports = [
 	{
 		id: 10,
 		name: 'Kurtis DuBuque',
-		match: '98',
+		match: 98,
 		description:
 			'Full-time Traveller. Globe Trotter. Occasional Photographer. Part time Singer/Dancer.',
 		status: 'Offline',

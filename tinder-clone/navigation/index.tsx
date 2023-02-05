@@ -97,7 +97,7 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Homescreen"
+        name="Home"
         component={Home}
         options={{
           title: 'Homescreen',
@@ -105,7 +105,7 @@ function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Messsages"
+        name="Messages"
         component={Messages}
         options={{
           title: 'Messages',

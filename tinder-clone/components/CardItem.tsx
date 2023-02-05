@@ -1,19 +1,19 @@
 import React from 'react';
 import styles from '../assets/styles';
 
-import { Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { Text, View, Image, Dimensions, TouchableOpacity, ImageRequireSource } from 'react-native';
 import Icon from './Icon';
 
 type CardItemProps = {
-  actions,
-  description,
-  image,
-  matches,
-  name,
-  onPressLeft,
-  onPressRight,
-  status,
-  variant
+  actions: any,
+  description: string,
+  image: ImageRequireSource,
+  matches: number,
+  name: string,
+  onPressLeft: Function,
+  onPressRight: Function,
+  status: string,
+  variant: boolean
 };
 
 const CardItem = ({

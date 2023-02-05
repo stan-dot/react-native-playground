@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import CardItem from '../components/CardItem';
 import Icon from '../components/Icon';
-import Demo from '../assets/data/demo.js';
+import { Demo, DemoProfile } from '../assets/data/demo';
 
 const Matches = () => {
   return (
@@ -40,8 +40,7 @@ const Matches = () => {
                   image={item.image}
                   name={item.name}
                   status={item.status}
-                  variant
-                />
+                  variant actions={undefined} description={undefined} matches={undefined} onPressLeft={undefined} onPressRight={undefined}                />
               </TouchableOpacity>
             )}
           />

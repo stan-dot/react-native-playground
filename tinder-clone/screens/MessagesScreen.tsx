@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Message from '../components/Message';
 import Icon from '../components/Icon';
-import Demo from '../assets/data/demo.js';
+import { Demo, DemoProfile } from '../assets/data/demo';
 
 const Messages = () => {
   return (

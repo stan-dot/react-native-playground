@@ -4,15 +4,15 @@ import styles from '../assets/styles';
 import { Text, View } from 'react-native';
 import Icon from './Icon';
 
-type ProfileProps = {
+export type ProfileProps = {
   age: number,
   info1: string,
   info2: string,
   info3: string,
   info4: string,
-  location,
-  matches,
-  name:string,
+  location: string,
+  matches: number,
+  name: string,
 };
 
 const ProfileItem = ({

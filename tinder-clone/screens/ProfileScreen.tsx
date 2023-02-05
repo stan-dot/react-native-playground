@@ -8,11 +8,13 @@ import {
   ImageBackground,
   TouchableOpacity
 } from 'react-native';
-import ProfileItem from '../components/ProfileItem';
+import ProfileItem, { ProfileProps } from '../components/ProfileItem';
 import Icon from '../components/Icon';
-import Demo from '../assets/data/demo.js';
+import { Demo, DemoProfile } from '../assets/data/demo';
 
 const Profile = () => {
+
+  const profile: ProfileProps = Demo[7];
   const {
     age,
     image,
@@ -23,7 +25,7 @@ const Profile = () => {
     location,
     match,
     name
-  } = Demo[7];
+  } = profile;
 
   return (
     <ImageBackground
