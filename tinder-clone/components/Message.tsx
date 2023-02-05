@@ -1,9 +1,16 @@
 import React from 'react';
 import styles from '../assets/styles';
 
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, ImageSourcePropType } from 'react-native';
 
-const Message = ({ image, lastMessage, name }) => {
+type MessageProps = {
+  image: ImageSourcePropType,
+  lastMessage: string,
+  name: string
+
+}
+
+const Message = ({ image, lastMessage, name }: MessageProps) => {
   return (
     <View style={styles.containerMessage}>
       <Image source={image} style={styles.avatar} />

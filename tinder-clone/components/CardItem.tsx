@@ -4,6 +4,18 @@ import styles from '../assets/styles';
 import { Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
 import Icon from './Icon';
 
+type CardItemProps = {
+  actions,
+  description,
+  image,
+  matches,
+  name,
+  onPressLeft,
+  onPressRight,
+  status,
+  variant
+};
+
 const CardItem = ({
   actions,
   description,
@@ -14,7 +26,7 @@ const CardItem = ({
   onPressRight,
   status,
   variant
-}) => {
+}: CardItemProps) => {
   // Custom styling
   const fullWidth = Dimensions.get('window').width;
   const imageStyle = [

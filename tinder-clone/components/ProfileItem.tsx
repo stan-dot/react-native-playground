@@ -4,6 +4,17 @@ import styles from '../assets/styles';
 import { Text, View } from 'react-native';
 import Icon from './Icon';
 
+type ProfileProps = {
+  age: number,
+  info1: string,
+  info2: string,
+  info3: string,
+  info4: string,
+  location,
+  matches,
+  name:string,
+};
+
 const ProfileItem = ({
   age,
   info1,
@@ -13,7 +24,7 @@ const ProfileItem = ({
   location,
   matches,
   name
-}) => {
+}: ProfileProps) => {
   return (
     <View style={styles.containerProfileItem}>
       <View style={styles.matchesProfileItem}>
