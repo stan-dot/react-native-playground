@@ -10,7 +10,6 @@ export default function EditScreenInfo({ path }: { path: string }) {
           Open up the code for this screen:
         </Text>
       </View>
-
     </View>
   );
 }

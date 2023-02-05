@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, ImageBackground } from 'react-native';
-import CardStack, { Card } from 'react-native-card-stack-swiper';
 import City from '../components/City';
 import Filters from '../components/Filters';
 import CardItem from '../components/CardItem';

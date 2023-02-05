@@ -12,8 +12,12 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import Home from '../screens/HomeScreen';
+import Matches from '../screens/MatchesScreen';
+import Messages from '../screens/MessagesScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
+import Profile from '../screens/ProfileScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
@@ -89,6 +93,38 @@ function BottomTabNavigator() {
         component={TabTwoScreen}
         options={{
           title: 'Tab Two',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Homescreen"
+        component={Home}
+        options={{
+          title: 'Homescreen',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Messsages"
+        component={Messages}
+        options={{
+          title: 'Messages',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Matches"
+        component={Matches}
+        options={{
+          title: 'Matches',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: 'Profile',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
