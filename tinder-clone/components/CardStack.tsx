@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import { polyfill } from 'react-lifecycles-compat';
 import {
   View,
   Animated,
   PanResponder,
   Dimensions,
   Text,
-  Platform
+  Platform,
+  PanResponderCallbacks
 } from 'react-native';
 
 const { height, width } = Dimensions.get('window');
+function mod(n: number, m: number): number {
+  return ((n % m) + m) % m;
+}
 
 class CardStack extends Component {
 
@@ -31,26 +34,28 @@ class CardStack extends Component {
       touchStart: 0,
     };
     this.distance = this.constructor.distance;
-    this._panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: (evt, gestureState) => false,
-      onStartShouldSetPanResponderCapture: (evt, gestureState) => false,
+    this._panResponder = PanResponder.create(this.PanResponderCallbacks());
+  }
+
+  private PanResponderCallbacks(): PanResponderCallbacks {
+    return {
       onMoveShouldSetPanResponder: (evt, gestureState) => {
         const isVerticalSwipe = Math.sqrt(
           Math.pow(gestureState.dx, 2) < Math.pow(gestureState.dy, 2)
-        )
+        );
         if (!this.props.verticalSwipe && isVerticalSwipe) {
-          return false
+          return false;
         }
-        return Math.sqrt(Math.pow(gestureState.dx, 2) + Math.pow(gestureState.dy, 2)) > 10
+        return Math.sqrt(Math.pow(gestureState.dx, 2) + Math.pow(gestureState.dy, 2)) > 10;
       },
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => {
         const isVerticalSwipe = Math.sqrt(
           Math.pow(gestureState.dx, 2) < Math.pow(gestureState.dy, 2)
-        )
+        );
         if (!this.props.verticalSwipe && isVerticalSwipe) {
-          return false
+          return false;
         }
-        return Math.sqrt(Math.pow(gestureState.dx, 2) + Math.pow(gestureState.dy, 2)) > 10
+        return Math.sqrt(Math.pow(gestureState.dx, 2) + Math.pow(gestureState.dy, 2)) > 10;
       },
       onPanResponderGrant: (evt, gestureState) => {
         this.props.onSwipeStart();
@@ -61,9 +66,9 @@ class CardStack extends Component {
         const movedY = gestureState.moveY - gestureState.y0;
         this.props.onSwipe(movedX, movedY);
         const { verticalSwipe, horizontalSwipe } = this.props;
-        const dragDistance = this.distance((horizontalSwipe) ? gestureState.dx : 0, (verticalSwipe) ? gestureState.dy : 0);
+        const dragDistance = this.distance(horizontalSwipe ? gestureState.dx : 0, verticalSwipe ? gestureState.dy : 0);
         this.state.dragDistance.setValue(dragDistance);
-        this.state.drag.setValue({ x: (horizontalSwipe) ? gestureState.dx : 0, y: (verticalSwipe) ? gestureState.dy : 0 });
+        this.state.drag.setValue({ x: horizontalSwipe ? gestureState.dx : 0, y: verticalSwipe ? gestureState.dy : 0 });
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
       onPanResponderRelease: (evt, gestureState) => {
@@ -71,12 +76,7 @@ class CardStack extends Component {
         const currentTime = new Date().getTime();
         const swipeDuration = currentTime - this.state.touchStart;
         const {
-          verticalThreshold,
-          horizontalThreshold,
-          disableTopSwipe,
-          disableLeftSwipe,
-          disableRightSwipe,
-          disableBottomSwipe,
+          verticalThreshold, horizontalThreshold, disableTopSwipe, disableLeftSwipe, disableRightSwipe, disableBottomSwipe,
         } = this.props;
 
         if (((Math.abs(gestureState.dx) > horizontalThreshold) ||
@@ -84,7 +84,7 @@ class CardStack extends Component {
             swipeDuration < 150)
         ) && this.props.horizontalSwipe) {
 
-          const swipeDirection = (gestureState.dx < 0) ? width * -1.5 : width * 1.5;
+          const swipeDirection = width * 1.5 * (gestureState.dx < 0) ? -1 : 1;
           if (swipeDirection < 0 && !disableLeftSwipe) {
             this._nextCard('left', swipeDirection, gestureState.dy, this.props.duration);
           }
@@ -101,7 +101,6 @@ class CardStack extends Component {
 
           const swipeDirection = (gestureState.dy < 0) ? height * -1 : height;
           if (swipeDirection < 0 && !disableTopSwipe) {
-
             this._nextCard('top', gestureState.dx, swipeDirection, this.props.duration);
           }
           else if (swipeDirection > 0 && !disableBottomSwipe) {
@@ -115,12 +114,11 @@ class CardStack extends Component {
           this._resetCard();
         }
       },
-      onPanResponderTerminate: (evt, gestureState) => {
-      },
+      onPanResponderTerminate: (evt, gestureState) => { },
       onShouldBlockNativeResponder: (evt, gestureState) => {
         return true;
       },
-    });
+    };
   }
 
   componentDidUpdate(prevProps) {
@@ -141,9 +139,9 @@ class CardStack extends Component {
     }
   }
 
-  _getIndex(index, cards){
-    return this.props.loop ? 
-      this.mod(index, cards):
+  _getIndex(index, cards) {
+    return this.props.loop ?
+      mod(index, cards) :
       index;
   }
 
@@ -171,7 +169,7 @@ class CardStack extends Component {
     const { children, loop } = this.props;
     const cards = Array.isArray(children) ? children : [children];
     const initialIndexA = this.props.initialIndex < cards.length ? this.props.initialIndex : 0;
-    const initialIndexB = loop ? this.mod(initialIndexA + 1, cards.length) : initialIndexA + 1;
+    const initialIndexB = loop ? mod(initialIndexA + 1, cards.length) : initialIndexA + 1;
     const cardA = cards[initialIndexA] || null;
     const cardB = cards[initialIndexB] || null;
     this.setState({
@@ -217,16 +215,13 @@ class CardStack extends Component {
     this._goBack('bottom');
   }
 
-  mod(n, m) {
-    return ((n % m) + m) % m;
-  }
 
-  _goBack(direction) {
+  _goBack(direction: string) {
     const { cards, sindex, topCard } = this.state;
 
     if ((sindex - 3) < 0 && !this.props.loop) return;
 
-    const previusCardIndex = this.mod(sindex - 3, cards.length)
+    const previusCardIndex = mod(sindex - 3, cards.length)
     let update = {};
     if (topCard === 'cardA') {
       update = {
@@ -312,7 +307,7 @@ class CardStack extends Component {
     const nextCard = (loop) ? (Math.abs(sindex) % cards.length) : sindex;
 
     // index of the swiped card
-    const index = (loop) ? this.mod(nextCard - 2, cards.length) : nextCard - 2;
+    const index = (loop) ? mod(nextCard - 2, cards.length) : nextCard - 2;
 
     if (index === cards.length - 1) {
       this.props.onSwipedAll();
@@ -526,5 +521,4 @@ CardStack.defaultProps = {
   outputRotationRange: ['-15deg', '0deg', '15deg'],
   duration: 300
 }
-polyfill(CardStack);
 export default CardStack;
