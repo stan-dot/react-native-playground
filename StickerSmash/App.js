@@ -1,7 +1,10 @@
 import * as ImagePicker from 'expo-image-picker';
+import * as MediaLibrary from 'expo-media-library';
 import { StatusBar } from 'expo-status-bar';
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { captureRef } from 'react-native-view-shot';
 import Button from './components/Button';
 import CircleButton from './components/CircleButton';
 import EmojiList from './components/EmojiList';
@@ -9,12 +12,15 @@ import EmojiPicker from './components/EmojiPicker';
 import EmojiSticker from './components/EmojiSticker';
 import IconButton from './components/IconButton';
 import ImageViewer from './components/ImageViewer';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import * as MediaLibrary from 'expo-media-library';
-import { captureRef } from 'react-native-view-shot';
+
 
 import domtoimage from 'dom-to-image';
-import { StyleSheet, View, Platform } from 'react-native';
+import { Platform } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+
+// testing code
+SplashScreen.preventAutoHideAsync();
+setTimeout(SplashScreen.hideAsync, 5000);
 
 
 const PlaceholderImage = require("./assets/images/background-image.png");
@@ -112,7 +118,7 @@ export default function App() {
             <Button label='Use this photo' onPress={() => setShowAppOptions(true)} />
           </View>
         )}
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose} >
         {/**here list of emoji components */}
 
