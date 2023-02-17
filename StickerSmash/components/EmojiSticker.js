@@ -5,10 +5,8 @@ import Animated, {
   useSharedValue, withSpring
 } from 'react-native-reanimated';
 
-
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 const AnimatedView = Animated.createAnimatedComponent(View);
-
 
 export default function EmojiSticker({ imageSize, stickerSource }) {
   const translateX = useSharedValue(0);
