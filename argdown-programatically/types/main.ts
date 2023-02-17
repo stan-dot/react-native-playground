@@ -1,25 +1,17 @@
-import { MemberType, Role, SectionEnum, PurpleType, RelationType, FromTypeEnum } from "./enums";
+import  {Role, SectionEnum, RelationType, EntityType } from "./enums";
+import { StatementFlags, TextCoordinates, Styling } from "./flattable";
 import { Map } from "./Map";
 
 
-// todo need to flatten this
-type StatementFlags={
-    isUsedAsRelationStatement: boolean;
-    isUsedAsPremise: boolean;
-    isUsedAsIntermediaryConclusion: boolean;
-    isUsedAsTopLevelStatement: boolean;
-    isUsedAsMainConclusion:         boolean;
-}
-
 export interface  Statement{
-    type:                      FromTypeEnum;
+    type:                      EntityType;
     title:                     string;
     relations:                 Relation[];
     members:                   Member[];
     section:                   SectionEnum;
     flags:                     StatementFlags;
-    fontColor:                 string;
-    color:                     string;
+    fontColor:   string;
+    color:       string;
     tags:                      string[];
 }
 // todo need to transform into JSON using the title as JSON object name
@@ -34,27 +26,19 @@ export interface ArgDownObject {
 }
 
 export interface Member {
-    type:           MemberType;
+    type:           EntityType;
     role:           Role;
     text?:          string;
    textCoordinates: TextCoordinates;
-    isTopLevel?:    boolean;
+    pcs?:           Member[];
     section:        SectionEnum;
     title:          string;
     ranges?:        Range[];
     tags?:          string[];
+    isTopLevel?:    boolean;
     isReference?:   boolean;
-    pcs?:           Member[];
     argumentTitle?: string;
     inference?:     Inference;
-}
-
-// todo need to flatten this
-type TextCoordinates={
-    startLine:       number;
-    startColumn:     number;
-    endLine:         number;
-    endColumn:       number;
 }
 
 export interface Inference {
@@ -81,16 +65,16 @@ export interface Range {
 }
 
 export interface Relation {
-    type:         PurpleType;
+    type:         EntityType;
     relationType: RelationType;
     from:         string;
-    fromType:     FromTypeEnum;
+    fromType:     EntityType;
     to:           string;
-    toType:       FromTypeEnum;
+    toType:       EntityType;
 }
 
 export interface Argument {
-    type:        FromTypeEnum;
+    type:        EntityType;
     relations:   Relation[];
     members:     Member[];
     pcs:         Member[];
@@ -98,8 +82,7 @@ export interface Argument {
     tags:        string[];
     section:     SectionEnum;
     textCoordinates: TextCoordinates;
-    fontColor:   string;
-    color:       string;
+    styling: Styling;
 }
 
 export interface SectionElement {
@@ -110,8 +93,7 @@ export interface SectionElement {
     children:    SectionElement[];
     ranges:      Range[];
     textCoordinates: TextCoordinates;
-    fontColor:   string;
-    color:       string;
+    styling: Styling;
     isGroup:     boolean;
     parent?:     SectionEnum;
 }

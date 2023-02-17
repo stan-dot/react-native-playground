@@ -4,11 +4,10 @@ export type Role = "argument-description" | "premise" | "main-conclusion" | "top
 export type SectionEnum = "s2" | "s3" | "s1";
 
 // statements are always member type
-export type MemberType = "statement";
-export type FromTypeEnum = "argument" | "equivalence-class";
+// relations are purple type
+// map-edge is edgetype
+export type EntityType = "argument" | "equivalence-class"| "statement" | "relation" | "map-edge";
 
 export type RelationType = "attack" | "support";
 
-export type PurpleType = "relation";
 
-export type EdgeType = "map-edge";
