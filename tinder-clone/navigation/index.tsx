@@ -96,7 +96,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="Home"
         component={Home}
         options={{
@@ -127,7 +127,8 @@ function BottomTabNavigator() {
           title: 'Profile',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
-      />
+      // />
+      */}
     </BottomTab.Navigator>
   );
 }

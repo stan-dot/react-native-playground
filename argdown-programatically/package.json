@@ -1,0 +1,22 @@
+{
+  "name": "argdown-programatically",
+  "version": "1.0.0",
+  "description": "A programatic interface to the Argdown inference notation",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [
+    "argdown",
+    "argument",
+    "debate"
+  ],
+  "author": "standot",
+  "license": "MIT",
+  "dependencies": {
+    "@argdown/core": "^1.7.5",
+    "@argdown/node": "^1.7.5",
+    "ramda": "^0.28.0",
+    "typescript": "^4.9.5"
+  }
+}
