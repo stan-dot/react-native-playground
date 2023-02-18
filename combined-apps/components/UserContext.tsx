@@ -7,6 +7,7 @@ export const UserContext = createContext<{ user: User | null; session: Session |
   session: null,
 })
 
+// todo update this to version 2.0
 export const UserContextProvider = (props: any) => {
   const [session, setSession] = useState<Session | null>(null)
   const [user, setUser] = useState<User | null>(null)
