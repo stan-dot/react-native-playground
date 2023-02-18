@@ -4,24 +4,72 @@ import { Styles } from '../lib/constants'
 import { supabase } from '../lib/initSupabase'
 
 import { Button, Input } from 'react-native-elements'
+import { AuthResponse, OAuthResponse, User } from '@supabase/supabase-js'
+// todo get from this https://tailwindcomponents.com/component/twitter-login
+
+type LoginTypes = 'none'|  'email' | 'signup' | 'github' | 'twitter';
+
+
+async function getAuthResponse(type: LoginTypes, email: string, password: string):Promise<AuthResponse | OAuthResponse>   {
+  if (type === 'email') {
+    return await supabase.auth.signInWithPassword({
+      email: 'example@email.com',
+      password: 'example-password',
+    }); 
+  }
+
+  if (type === 'signup') {
+    return await supabase.auth.signUp({
+      email: 'example@email.com',
+      password: 'example-password',
+    });
+
+   }
+ 
+
+  if (type === 'github') {
+   return  await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        redirectTo: "https://tqesyutadabvauogvnpc.supabase.co/auth/v1/callback"
+      }
+    });
+     }
+
+  if (type === 'twitter') {
+     return await supabase.auth.signInWithOAuth({
+      provider: 'twitter',
+      options: {
+        redirectTo: "https://tqesyutadabvauogvnpc.supabase.co/auth/v1/callback"
+      }
+    });
+     }
+
+  throw Error('unknown login typ');
+}
+
+
 
 export default function Auth() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState('')
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [loading, setLoading] = useState<LoginTypes>('none')
 
-  const handleLogin = async (type: string, email: string, password: string) => {
+  const handleLogin = async (type: LoginTypes, email: string, password: string) => {
     setLoading(type)
-    const { error, user } =
-      type === 'LOGIN'
-        ? await supabase.auth.signIn({ email, password })
-        : await supabase.auth.signUp({ email, password })
-    if (!error && !user) Alert.alert('Check your email for the login link!')
-    if (error) Alert.alert(error.message)
-    setLoading('')
+    const { data, error:authError } = await getAuthResponse(type, email, password);
+    if (!authError) Alert.alert('Check your email for the login link!')
+    if (authError) Alert.alert(authError.message)
+    // todo sortout this
+    const firstUser: User = data.user;
 
+    const { data:sessionData, error: sessionError } = await supabase.auth.getSession()
+    const user: User | null = (sessionData.session && sessionData.session.user) ?? null;
+    if (!sessionError && !user) Alert.alert('Check your email for the login link!')
+    if (sessionError) Alert.alert(sessionError.message)
+    setLoading('none');
   }
-  console.log('rendeirng auth');
+  console.log('rendering auth');
 
   return (
     <View>
@@ -50,16 +98,33 @@ export default function Auth() {
         <Button
           title="Sign in"
           disabled={!!loading.length}
-          loading={loading === 'LOGIN'}
-          onPress={() => handleLogin('LOGIN', email, password)}
+          loading={loading === 'email'}
+          onPress={() => handleLogin('email', email, password)}
         />
       </View>
       <View style={styles.verticallySpaced}>
         <Button
           title="Sign up"
           disabled={!!loading.length}
-          loading={loading === 'SIGNUP'}
-          onPress={() => handleLogin('SIGNUP', email, password)}
+          loading={loading === 'signup'}
+          onPress={() => handleLogin('signup', email, password)}
+        />
+      </View>
+      <View style={styles.verticallySpaced}>
+        <Button
+          title="with github"
+          disabled={!!loading.length}
+          loading={loading === 'github'}
+          onPress={() => handleLogin('github', email, password)}
+        />
+      </View>
+
+      <View style={styles.verticallySpaced}>
+        <Button
+          title="with twitter"
+          disabled={!!loading.length}
+          loading={loading === 'twitter'}
+          onPress={() => handleLogin('twitter', email, password)}
         />
       </View>
     </View>
