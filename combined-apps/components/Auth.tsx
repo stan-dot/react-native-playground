@@ -19,7 +19,9 @@ export default function Auth() {
     if (!error && !user) Alert.alert('Check your email for the login link!')
     if (error) Alert.alert(error.message)
     setLoading('')
+
   }
+  console.log('rendeirng auth');
 
   return (
     <View>
