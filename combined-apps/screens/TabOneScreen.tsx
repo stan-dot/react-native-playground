@@ -5,7 +5,7 @@ import { RootTabScreenProps } from '../types';
 import "../tailwind.css";
 import { styled } from 'nativewind';
 
-const StyledView = styled(View);
+const StyledView = styled(View, 'bg-white' );
 const StyledText = styled(Text);
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {

@@ -7,7 +7,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
   return (
     <View>
       {/* <View style={styles.getStartedContainer}> */}
-      <View className="items-center mx-50">
+      <View className="items-center mx-50 bg-slate-50">
         <Text
           // style={styles.getStartedText}
           className="text-lg leading-6 text-center"
