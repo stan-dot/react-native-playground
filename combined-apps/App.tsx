@@ -13,7 +13,7 @@ const Container = () => {
   const colorScheme = useColorScheme();
   console.log('in the container');
 
-  // return <Navigation colorScheme={colorScheme} />
+  return <Navigation colorScheme={colorScheme} />
   return user ?
     <Navigation colorScheme={colorScheme} />
     : <Auth />

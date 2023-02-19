@@ -1,3 +1,4 @@
+import 'react-native-url-polyfill/auto';
 import React, { useState } from 'react'
 import { Alert, StyleSheet, View } from 'react-native'
 import { Styles } from '../lib/constants'
@@ -9,24 +10,26 @@ import { AuthResponse, OAuthResponse, User } from '@supabase/supabase-js'
 
 type LoginTypes = 'none'|  'email' | 'signup' | 'github' | 'twitter';
 
+// async function signInWithEmail() {
+//   const { data, error } = await supabase.auth.signInWithOtp({
+//     email: 'example@email.com',
+//     options: {
+//       emailRedirectTo: 'https://example.com/welcome',
+//     },
+//   })
+// }
 
 async function getAuthResponse(type: LoginTypes, email: string, password: string):Promise<AuthResponse | OAuthResponse>   {
   if (type === 'email') {
-    return await supabase.auth.signInWithPassword({
-      email: 'example@email.com',
-      password: 'example-password',
-    }); 
+    console.log(window.localStorage);
+    return await supabase.auth.signInWithPassword({ email, password }); 
+
   }
 
   if (type === 'signup') {
-    return await supabase.auth.signUp({
-      email: 'example@email.com',
-      password: 'example-password',
-    });
-
+    return await supabase.auth.signUp({ email, password });
    }
  
-
   if (type === 'github') {
    return  await supabase.auth.signInWithOAuth({
       provider: 'github',
@@ -58,6 +61,7 @@ export default function Auth() {
   const handleLogin = async (type: LoginTypes, email: string, password: string) => {
     setLoading(type)
     const { data, error:authError } = await getAuthResponse(type, email, password);
+    console.log(console.error(authError));
     if (!authError) Alert.alert('Check your email for the login link!')
     if (authError) Alert.alert(authError.message)
     console.log(data);
@@ -94,7 +98,7 @@ export default function Auth() {
       <View style={[styles.verticallySpaced, { marginTop: 20 }]}>
         <Button
           title="Sign in"
-          disabled={!!loading.length}
+          // disabled={!!loading.length}
           loading={loading === 'email'}
           onPress={() => handleLogin('email', email, password)}
         />
@@ -102,15 +106,15 @@ export default function Auth() {
       <View style={styles.verticallySpaced}>
         <Button
           title="Sign up"
-          disabled={!!loading.length}
+          // disabled={!!loading.length}
           loading={loading === 'signup'}
           onPress={() => handleLogin('signup', email, password)}
         />
       </View>
       <View style={styles.verticallySpaced}>
         <Button
-          title="with github"
-          disabled={!!loading.length}
+          title="Sign in with github coming soon"
+          disabled={true}
           loading={loading === 'github'}
           onPress={() => handleLogin('github', email, password)}
         />
@@ -118,8 +122,8 @@ export default function Auth() {
 
       <View style={styles.verticallySpaced}>
         <Button
-          title="with twitter"
-          disabled={!!loading.length}
+          title="Sign in with twitter coming soon"
+          disabled={true}
           loading={loading === 'twitter'}
           onPress={() => handleLogin('twitter', email, password)}
         />

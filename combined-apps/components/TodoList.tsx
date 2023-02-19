@@ -1,3 +1,4 @@
+import 'react-native-url-polyfill/auto';
 import React, { useEffect, useState } from 'react'
 import { View, StyleSheet, ScrollView, SafeAreaView, FlatList } from 'react-native'
 import { Styles } from '../lib/constants'
@@ -8,7 +9,6 @@ import { useUser } from '../components/UserContext'
 import { Button, Input, ListItem, CheckBox } from 'react-native-elements'
 
 /** URL polyfill. Required for Supabase queries to work in React Native. */
-import 'react-native-url-polyfill/auto'
 
 type Todo = {
   id: number

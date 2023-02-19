@@ -1,7 +1,10 @@
+import 'react-native-url-polyfill/auto';
 import React, { useEffect, useState, createContext, useContext } from 'react'
 import { Session, User } from '@supabase/supabase-js'
 import { supabase } from '../lib/initSupabase'
 import { Alert } from 'react-native';
+
+/** URL polyfill. Required for Supabase queries to work in React Native. */
 
 export const UserContext = createContext<{ user: User | null; session: Session | null }>({
   user: null,
@@ -14,8 +17,10 @@ export const UserContextProvider = (props: any) => {
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
+    console.log('user context use effect');
     // const { data:sessionData, error: sessionError } = await supabase.auth.getSession()
     supabase.auth.getSession().then(({ data, error }) => { 
+      console.log('getting the session', data);
       const user: User | null = (data.session && data.session.user) ?? null;
       if (!error && !user) Alert.alert('Check your email for the login link!')
       if (error) Alert.alert(error.message)
