@@ -8,7 +8,7 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import { supabase } from './lib/initSupabase';
 import Navigation from './navigation';
-import "./tailwind.css";
+// import "./tailwind.css";
 
 
 const Container = () => {

@@ -105,7 +105,8 @@ export function HomeScreen() {
         </View>
       </View>) : (
         <View style={styles.footerContainer}>
-          <Button label='Choose a photo' theme={'primary'} onPress={pickImageAsync} />
+          {/* <Button label='Choose a photo' theme={'primary'} onPress={pickImageAsync} /> */}
+          <Button label='Choose a photo' onPress={pickImageAsync} />
           <Button label='Use this photo' onPress={() => setShowAppOptions(true)} />
         </View>
       )}
