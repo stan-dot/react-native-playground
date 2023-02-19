@@ -2,60 +2,10 @@ import 'react-native-url-polyfill/auto';
 import React, { useState } from 'react'
 import { Alert, StyleSheet, View } from 'react-native'
 import { Styles } from '../lib/constants'
-import { supabase } from '../lib/initSupabase'
 
 import { Button, Input } from 'react-native-elements'
-import { AuthResponse, OAuthResponse, User } from '@supabase/supabase-js'
-// todo get from this https://tailwindcomponents.com/component/twitter-login
-
-type LoginTypes = 'none'|  'email' | 'signup' | 'github' | 'twitter';
-
-// async function signInWithEmail() {
-//   const { data, error } = await supabase.auth.signInWithOtp({
-//     email: 'example@email.com',
-//     options: {
-//       emailRedirectTo: 'https://example.com/welcome',
-//     },
-//   })
-// }
-
-async function getAuthResponse(type: LoginTypes, email: string, password: string):Promise<AuthResponse | OAuthResponse>   {
-  if (type === 'email') {
-    console.log(window.localStorage);
-    // return await supabase.auth.signInWithPassword({ email, password }); 
-    const { data, error } =await supabase.auth.signInWithPassword({ email, password }); 
-    if(data.session) supabase.auth.setSession(data.session);
-    // return { data, error };
-
-  }
-
-  if (type === 'signup') {
-    return await supabase.auth.signUp({ email, password });
-   }
- 
-  if (type === 'github') {
-   return  await supabase.auth.signInWithOAuth({
-      provider: 'github',
-      options: {
-        redirectTo: "https://tqesyutadabvauogvnpc.supabase.co/auth/v1/callback"
-      }
-    });
-     }
-
-  if (type === 'twitter') {
-     return await supabase.auth.signInWithOAuth({
-      provider: 'twitter',
-      options: {
-        redirectTo: "https://tqesyutadabvauogvnpc.supabase.co/auth/v1/callback"
-      }
-    });
-     }
-
-  throw Error('unknown login typ');
-}
-
-
-
+import { User } from '@supabase/supabase-js'
+import { LoginTypes, getAuthResponse } from './LoginTypes';
 export default function Auth() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -75,9 +25,15 @@ export default function Auth() {
   }
   console.log('rendering auth');
 
+
+// const containerStyle = "mt-40 p-2";
+
+const buttonStyles = "py-4 self-stretch";
+
   return (
     <View>
-      <View style={[styles.verticallySpaced, { marginTop: 20 }]}>
+      {/* <View style={[styles.verticallySpaced, { marginTop: 20 }]}> */}
+      <View className={`py-4 self-stretch mt-20`}>
         <Input
           label="Email"
           leftIcon={{ type: 'font-awesome', name: 'envelope' }}
@@ -87,7 +43,8 @@ export default function Auth() {
           autoCapitalize={'none'}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+      {/* <View style={styles.verticallySpaced}> */}
+      <View className={`py-4 self-stretch`}>
         <Input
           label="Password"
           leftIcon={{ type: 'font-awesome', name: 'lock' }}
@@ -98,7 +55,8 @@ export default function Auth() {
           autoCapitalize={'none'}
         />
       </View>
-      <View style={[styles.verticallySpaced, { marginTop: 20 }]}>
+      {/* <View style={[styles.verticallySpaced, { marginTop: 20 }]}> */}
+      <View className={`py-4 self-stretch mt-20`}>
         <Button
           title="Sign in"
           // disabled={!!loading.length}
@@ -106,7 +64,9 @@ export default function Auth() {
           onPress={() => handleLogin('email', email, password)}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+      {/* <View style={styles.verticallySpaced}> */}
+
+      <View className={`py-4 self-stretch`}>
         <Button
           title="Sign up"
           // disabled={!!loading.length}
@@ -114,7 +74,9 @@ export default function Auth() {
           onPress={() => handleLogin('signup', email, password)}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+
+      {/* <View style={styles.verticallySpaced}> */}
+      <View className={`py-4 self-stretch`}>
         <Button
           title="Sign in with github coming soon"
           disabled={true}
@@ -123,7 +85,8 @@ export default function Auth() {
         />
       </View>
 
-      <View style={styles.verticallySpaced}>
+      {/* <View style={styles.verticallySpaced}> */}
+      <View className={`py-4 self-stretch`}>
         <Button
           title="Sign in with twitter coming soon"
           disabled={true}
@@ -134,15 +97,3 @@ export default function Auth() {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 40,
-    padding: Styles.spacing,
-  },
-  verticallySpaced: {
-    paddingTop: 4,
-    paddingBottom: 4,
-    alignSelf: 'stretch',
-  },
-})
