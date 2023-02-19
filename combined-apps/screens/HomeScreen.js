@@ -88,7 +88,8 @@ export function HomeScreen() {
   };
 
   return <GestureHandlerRootView style={styles.container}>
-    <View style={styles.imageContainer}>
+    {/* <View style={styles.imageContainer}> */}
+    <View className="background-red-800">
       {/* <Image source={PlaceholderImage} style={styles.image} /> */}
       <View ref={imageRef} collapsable={false}>
         <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage} />
