@@ -18,7 +18,6 @@ export default function Button({ label, theme, onPress }) {
           style={styles.buttonIcon}
         />
         <Text
-
           // style={[styles.buttonLabel, { color: "#25292e" }]}
           className="text-red-600"
         >{label}</Text>
