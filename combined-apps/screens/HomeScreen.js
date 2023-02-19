@@ -110,6 +110,11 @@ export function HomeScreen() {
           <Button label='Use this photo' onPress={() => setShowAppOptions(true)} />
         </View>
       )}
+    <View className="w-40 h-40 bg-cyan-300">
+      <Text className="text-red-700">
+        hello!
+      </Text>
+    </View>
     <StatusBar style="light" />
     <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
       {/**here list of emoji components */}

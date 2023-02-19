@@ -1,9 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
-import { TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 import Colors from '../constants/Colors';
-import { MonoText } from './StyledText';
-import { Text, View } from './Themed';
 
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
@@ -13,8 +11,6 @@ export default function EditScreenInfo({ path }: { path: string }) {
         <Text
           // style={styles.getStartedText}
           className="text-lg leading-6 text-center"
-          // lightColor="rgba(0,0,0,0.8)"
-          // darkColor="rgba(255,255,255,0.8)"
         >
           Open up the code for this screen:
         </Text>
@@ -22,17 +18,13 @@ export default function EditScreenInfo({ path }: { path: string }) {
         <View
           // style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
           className="my-4 rounded-sm px-2"
-          // darkColor="rgba(255,255,255,0.05)"
-          // lightColor="rgba(0,0,0,0.05)"
         >
-          <MonoText>{path}</MonoText>
+          <Text>{path}</Text>
         </View>
 
         <Text
           // style={styles.getStartedText}
           className="text-lg leading-6 text-center"
-          // lightColor="rgba(0,0,0,0.8)"
-          // darkColor="rgba(255,255,255,0.8)"
         >
           Change any of the text, save the file, and your app will automatically update.
         </Text>
@@ -41,7 +33,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
       {/* <View style={styles.helpContainer}> */}
       <View className="m-3 items-center">
         <TouchableOpacity onPress={handleHelpPress} >
-        {/* <TouchableOpacity onPress={handleHelpPress} className="py-4"> */}
+          {/* <TouchableOpacity onPress={handleHelpPress} className="py-4"> */}
           {/* <Text style={styles.helpLinkText} lightColor={Colors.light.tint}> */}
           <Text className="text-center" lightColor={Colors.light.tint}>
             Tap here if your app doesn't automatically update after making changes
