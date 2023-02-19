@@ -1,9 +1,9 @@
 import { Image, View } from 'react-native';
 import { PanGestureHandler, TapGestureHandler } from 'react-native-gesture-handler';
-import Animated, {
-  useAnimatedGestureHandler, useAnimatedStyle,
-  useSharedValue, withSpring
-} from 'react-native-reanimated';
+// import Animated, {
+//   useAnimatedGestureHandler, useAnimatedStyle,
+//   useSharedValue, withSpring
+// } from 'react-native-reanimated';
 
 // const AnimatedImage = Animated.createAnimatedComponent(Image);
 // const AnimatedView = Animated.createAnimatedComponent(View);
