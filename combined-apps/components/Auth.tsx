@@ -22,7 +22,10 @@ type LoginTypes = 'none'|  'email' | 'signup' | 'github' | 'twitter';
 async function getAuthResponse(type: LoginTypes, email: string, password: string):Promise<AuthResponse | OAuthResponse>   {
   if (type === 'email') {
     console.log(window.localStorage);
-    return await supabase.auth.signInWithPassword({ email, password }); 
+    // return await supabase.auth.signInWithPassword({ email, password }); 
+    const { data, error } =await supabase.auth.signInWithPassword({ email, password }); 
+    if(data.session) supabase.auth.setSession(data.session);
+    // return { data, error };
 
   }
 
