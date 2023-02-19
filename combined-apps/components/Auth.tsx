@@ -60,13 +60,10 @@ export default function Auth() {
     const { data, error:authError } = await getAuthResponse(type, email, password);
     if (!authError) Alert.alert('Check your email for the login link!')
     if (authError) Alert.alert(authError.message)
-    // todo sortout this
-    const firstUser: User = data.user;
+    console.log(data);
+    // todo possibly the user context will auto-update
+    // const firstUser: User = data.user;
 
-    const { data:sessionData, error: sessionError } = await supabase.auth.getSession()
-    const user: User | null = (sessionData.session && sessionData.session.user) ?? null;
-    if (!sessionError && !user) Alert.alert('Check your email for the login link!')
-    if (sessionError) Alert.alert(sessionError.message)
     setLoading('none');
   }
   console.log('rendering auth');

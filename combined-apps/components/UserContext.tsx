@@ -1,6 +1,7 @@
 import React, { useEffect, useState, createContext, useContext } from 'react'
 import { Session, User } from '@supabase/supabase-js'
 import { supabase } from '../lib/initSupabase'
+import { Alert } from 'react-native';
 
 export const UserContext = createContext<{ user: User | null; session: Session | null }>({
   user: null,
@@ -13,9 +14,16 @@ export const UserContextProvider = (props: any) => {
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
-    const session = supabase.auth.session()
-    setSession(session)
-    setUser(session?.user ?? null)
+    // const { data:sessionData, error: sessionError } = await supabase.auth.getSession()
+    supabase.auth.getSession().then(({ data, error }) => { 
+      const user: User | null = (data.session && data.session.user) ?? null;
+      if (!error && !user) Alert.alert('Check your email for the login link!')
+      if (error) Alert.alert(error.message)
+      // const session = supabase.auth.session()
+      setSession(session)
+      setUser(session?.user ?? null)
+     });
+
     const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log(`Supabase auth event: ${event}`)
       setSession(session)
@@ -23,7 +31,8 @@ export const UserContextProvider = (props: any) => {
     })
 
     return () => {
-      authListener!.unsubscribe()
+      authListener!.subscription.unsubscribe();
+      // authListener!.unsubscribe()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

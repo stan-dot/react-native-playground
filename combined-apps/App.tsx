@@ -14,7 +14,9 @@ const Container = () => {
   console.log('in the container');
 
   // return <Navigation colorScheme={colorScheme} />
-  return user ? <Navigation colorScheme={colorScheme} /> : <Auth/>
+  return user ?
+    <Navigation colorScheme={colorScheme} />
+    : <Auth />
 }
 
 export default function App() {
@@ -25,11 +27,11 @@ export default function App() {
   } else {
     return (
       <UserContextProvider>
-      <SafeAreaProvider>
-        <Container />
-        <StatusBar style="auto" />
-      </SafeAreaProvider>
- </UserContextProvider >
+        <SafeAreaProvider>
+          <Container />
+          <StatusBar style="auto" />
+        </SafeAreaProvider>
+      </UserContextProvider >
     );
   }
 }
