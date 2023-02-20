@@ -31,6 +31,7 @@ export default function TodoList() {
     const { data: todos, error } = await supabase
       .from<Todo>('todos')
       .select('*')
+      // .filter('id', 'eq', 5)
       .order('id', { ascending: false })
     if (error) console.log('error', error)
     else setTodos(todos!)
