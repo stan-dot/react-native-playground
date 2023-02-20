@@ -1,11 +1,8 @@
-import 'react-native-url-polyfill/auto';
-import React, { useState } from 'react'
-import { Alert, StyleSheet, View } from 'react-native'
-import { Styles } from '../lib/constants'
+import React, { useState } from 'react';
+import { Alert, View } from 'react-native';
 
-import { Button, Input } from 'react-native-elements'
-import { User } from '@supabase/supabase-js'
-import { LoginTypes, getAuthResponse } from './LoginTypes';
+import { Button, Input } from 'react-native-elements';
+import { getAuthResponse, LoginTypes } from './LoginTypes';
 export default function Auth() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
