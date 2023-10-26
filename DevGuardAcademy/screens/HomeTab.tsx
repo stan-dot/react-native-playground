@@ -6,6 +6,9 @@ import { CardModal } from "./CardModal";
 import { HomeScreenComponent } from "./HomeScreen";
 import { TabStackParamList } from "../App";
 import { RouteProp } from "@react-navigation/core";
+import { DetailsScreen } from "./DetailsScreen";
+import { StudyScreen } from "./StudyScreen";
+import React from "react";
 
 type Props = {
   navigation: NativeStackNavigationProp<TabStackParamList, "HomeTab">;
@@ -35,7 +38,17 @@ export function HomeTab(
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={HomeScreenComponent}
+        component={HomeScreenComponent as React.FC}
+        options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="Details"
+        component={DetailsScreen as React.FC}
+        options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="Study"
+        component={StudyScreen as React.FC}
         options={{ headerShown: false }}
       />
       <HomeStack.Group screenOptions={{ presentation: "modal" }}>

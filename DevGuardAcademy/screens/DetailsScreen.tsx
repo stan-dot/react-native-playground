@@ -38,7 +38,7 @@ export function DetailsScreen({ navigation, route }: Props) {
       <Text>Details Screen for deck {deckId}</Text>
       <Button
         title="Go to Details... again"
-        onPress={() => navigation.push("Details", { deckId })}
+        onPress={() => navigation.push("Details", { deckId: deckId })}
       />
       <Button
         title="Go to Home"

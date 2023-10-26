@@ -40,10 +40,10 @@ function BottomTabNavigator() {
       <Tab.Group>
         <Tab.Screen
           name="HomeTab"
-          component={HomeTab}
+          component={HomeTab as React.FC}
           options={{ title: "Overview" }}
         />
-        <Tab.Screen name="Stats" component={StatsScreen} />
+        <Tab.Screen name="Stats" component={StatsScreen as React.FC} />
       </Tab.Group>
     </Tab.Navigator>
   );

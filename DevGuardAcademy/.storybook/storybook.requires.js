@@ -50,6 +50,8 @@ if (parameters) {
 const getStories = () => {
   return {
     "./components/Button/Button.stories.tsx": require("../components/Button/Button.stories.tsx"),
+    "./components/DailyStack/DailyStack.stories.tsx": require("../components/DailyStack/DailyStack.stories.tsx"),
+    "./components/Flashcard/Flashcard.stories.tsx": require("../components/Flashcard/Flashcard.stories.tsx"),
   };
 };
 

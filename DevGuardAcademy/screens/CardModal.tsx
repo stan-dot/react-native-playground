@@ -6,14 +6,14 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, Text } from "@rneui/themed";
 import { View } from "react-native";
 import { DetailsScreenParamList } from "./DetailsScreen";
-
-type CardModalNavigationProp = NativeStackNavigationProp<
-  DetailsScreenParamList,
-  "CardModal"
->;
+import { RouteProp } from "@react-navigation/core";
 
 type Props = {
-  navigation: CardModalNavigationProp;
+  navigation: NativeStackNavigationProp<
+    DetailsScreenParamList,
+    "CardModal"
+  >;
+  route: RouteProp<DetailsScreenParamList, "CardModal">;
 };
 
 export function CardModal({ navigation }: Props) {
