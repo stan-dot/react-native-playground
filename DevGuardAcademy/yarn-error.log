@@ -1,8 +1,8 @@
 Arguments: 
-  /home/stan-dot/.nvm/versions/node/v18.18.1/bin/node /home/stan-dot/.yarn/bin/yarn.js storybook:web
+  /home/stan-dot/.nvm/versions/node/v18.18.1/bin/node /home/stan-dot/.yarn/bin/yarnpkg add react-native-vector-ivons
 
 PATH: 
-  /usr/local/n/versions/node/<18.18.1>:/home/stan-dot/.yarn/bin:/home/stan-dot/.config/yarn/global/node_modules/.bin:/usr/share/rvm/gems/ruby-3.1.2/bin:/usr/share/rvm/gems/ruby-3.1.2@global/bin:/usr/share/rvm/rubies/ruby-3.1.2/bin:/home/stan-dot/.local/share/pnpm:/home/stan-dot/miniconda3/bin:/home/stan-dot/miniconda3/condabin:/home/stan-dot/.cargo/bin:/home/stan-dot/.nvm/versions/node/v18.18.1/bin:/home/stan-dot/.deno/bin:/home/stan-dot/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python39/Scripts:/mnt/c/Python39:/mnt/c/Program Files/Java/jdk-15.0.1/bin:/mnt/c/Python38/Scripts:/mnt/c/Python38:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0:/mnt/c/Windows/System32/OpenSSH:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/ProgramData/chocolatey/lib/ghc/tools/ghc-8.10.2/bin:/mnt/c/ProgramData/chocolatey/lib/haskell-dev:/mnt/c/ProgramData/chocolatey/lib/ghc:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/Program Files (x86)/PowerShell/7:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn:/mnt/c/Program Files/dotnet:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Stan/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Stan/AppData/Roaming/npm:/mnt/c/Users/Stan/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Stan/AppData/Local/Microsoft/WindowsApps:/usr/share/rvm/bin
+  /tmp/yarn--1698317980013-0.11997310776722481:/home/stan-dot/projects/playgrounds/react-native-playground/DevGuardAcademy/node_modules/.bin:/home/stan-dot/.config/yarn/link/node_modules/.bin:/home/stan-dot/.nvm/versions/node/v18.18.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/stan-dot/.nvm/versions/node/v18.18.1/lib/node_modules/npm/bin/node-gyp-bin:/home/stan-dot/.nvm/versions/node/v18.18.1/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/n/versions/node/<18.18.1>:/home/stan-dot/.yarn/bin:/home/stan-dot/.config/yarn/global/node_modules/.bin:/usr/share/rvm/gems/ruby-3.1.2/bin:/usr/share/rvm/gems/ruby-3.1.2@global/bin:/usr/share/rvm/rubies/ruby-3.1.2/bin:/home/stan-dot/.local/share/pnpm:/home/stan-dot/miniconda3/bin:/home/stan-dot/miniconda3/condabin:/home/stan-dot/.cargo/bin:/home/stan-dot/.nvm/versions/node/v18.18.1/bin:/home/stan-dot/.deno/bin:/home/stan-dot/.vscode-server/bin/f1b07bd25dfad64b0167beb15359ae573aecd2cc/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python39/Scripts:/mnt/c/Python39:/mnt/c/Program Files/Java/jdk-15.0.1/bin:/mnt/c/Python38/Scripts:/mnt/c/Python38:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0:/mnt/c/Windows/System32/OpenSSH:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/ProgramData/chocolatey/lib/ghc/tools/ghc-8.10.2/bin:/mnt/c/ProgramData/chocolatey/lib/haskell-dev:/mnt/c/ProgramData/chocolatey/lib/ghc:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/Program Files (x86)/PowerShell/7:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0:/mnt/c/WINDOWS/System32/OpenSSH:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Microsoft SQL Server/130/Tools/Binn:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn:/mnt/c/Program Files/dotnet:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Stan/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Stan/AppData/Roaming/npm:/mnt/c/Users/Stan/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Stan/AppData/Local/Microsoft/WindowsApps:/usr/share/rvm/bin
 
 Yarn version: 
   1.22.19
@@ -14,12 +14,17 @@ Platform:
   linux x64
 
 Trace: 
-  SyntaxError: /home/stan-dot/projects/playgrounds/react-native-playground/DevGuardAcademy/package.json: Unexpected token } in JSON at position 874
-      at JSON.parse (<anonymous>)
-      at /home/stan-dot/.yarn/lib/cli.js:1629:59
-      at Generator.next (<anonymous>)
-      at step (/home/stan-dot/.yarn/lib/cli.js:310:30)
-      at /home/stan-dot/.yarn/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/react-native-vector-ivons: Not found
+      at params.callback [as _callback] (/home/stan-dot/.yarn/lib/cli.js:66145:18)
+      at self.callback (/home/stan-dot/.yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:517:28)
+      at Request.<anonymous> (/home/stan-dot/.yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:517:28)
+      at IncomingMessage.<anonymous> (/home/stan-dot/.yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:631:28)
+      at IncomingMessage.emit (node:events:529:35)
+      at endReadableNT (node:internal/streams/readable:1368:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
 
 npm manifest: 
   {
@@ -39,7 +44,7 @@ npm manifest:
       "storybook-watch": "sb-rn-watcher --config-path .ondevice",
       "storybook": "sb-rn-get-stories --config-path .ondevice && cross-env STORYBOOK_ENABLED='true' expo start",
       "storybook:ios": "sb-rn-get-stories --config-path .ondevice && cross-env STORYBOOK_ENABLED='true' expo start --ios",
-      "storybook:android": "sb-rn-get-stories --config-path .ondevice && cross-env STORYBOOK_ENABLED='true' expo start --android",
+      "storybook:android": "sb-rn-get-stories --config-path .ondevice && cross-env STORYBOOK_ENABLED='true' expo start --android"
     },
     "dependencies": {
       "@amplitude/analytics-react-native": "^1.4.4",
@@ -48,6 +53,7 @@ npm manifest:
       "@react-native-community/datetimepicker": "7.2.0",
       "@react-native-community/slider": "4.4.2",
       "@react-navigation/native": "^6.1.9",
+      "@react-navigation/native-stack": "^6.9.16",
       "@rneui/base": "^4.0.0-rc.8",
       "@rneui/themed": "^4.0.0-rc.8",
       "expo": "^49.0.7",
@@ -2333,6 +2339,19 @@ Lockfile:
       query-string "^7.1.3"
       react-is "^16.13.0"
       use-latest-callback "^0.1.7"
+  
+  "@react-navigation/elements@^1.3.21":
+    version "1.3.21"
+    resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.3.21.tgz#debac6becc6b6692da09ec30e705e476a780dfe1"
+    integrity sha512-eyS2C6McNR8ihUoYfc166O1D8VYVh9KIl0UQPI8/ZJVsStlfSTgeEEh+WXge6+7SFPnZ4ewzEJdSAHH+jzcEfg==
+  
+  "@react-navigation/native-stack@^6.9.16":
+    version "6.9.16"
+    resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-6.9.16.tgz#d3dfc1ebe51da34eff36d5475d7b33d982a59758"
+    integrity sha512-SrmBGr5YvRxDtdTacOkA/wvqwpt9kt+AsYpmt82hKMPKpu0v98WONedTXDzi6whhY3jeT2GZkwF8hyrJ+wDbTA==
+    dependencies:
+      "@react-navigation/elements" "^1.3.21"
+      warn-once "^0.1.0"
   
   "@react-navigation/native@^6.1.9":
     version "6.1.9"
