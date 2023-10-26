@@ -12,3 +12,5 @@
 ## interim
 - [ ] add modals capabiltiy
 - [ ] add good bottom navigation
+
+- [ ] change view into safearea view at the top level https://reactnative.dev/docs/safeareaview
