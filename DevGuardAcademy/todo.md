@@ -2,16 +2,18 @@
 - [x] set stuff up
 - [x] develop presentation components
 - [x] develop screens
-- [ ] develop inter-screen navigation
-- [ ] integrate amplitude
+- [x] add modals capabiltiy
+- [x] add good bottom navigation
+- [x] develop inter-screen navigation
 - [ ] run and record a test run
 
 ## interim
-- [ ] add modals capabiltiy
-- [ ] add good bottom navigation
-
 - [ ] change view into safearea view at the top level https://reactnative.dev/docs/safeareaview
+
+## amplitude integration
+- [ ] integrate amplitude
 - [ ] ok maybe if sdk is there the safety is less relevant, but still need to setup with vercel https://vercel.com/new/templates/other/nodejs-serverless-function-express
+- [x] consider running it as a side effect https://redux-saga.js.org/ - nah, deprecated it seems
 
 
 ## marketing

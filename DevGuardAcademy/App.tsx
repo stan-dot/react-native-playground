@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createTheme, Text, ThemeProvider } from "@rneui/themed";
 import Constants from "expo-constants";
 import { StyleSheet, View } from "react-native";
-import { MyTabBar } from "./MyTabBar";
+import { MyTabBar } from "./components/MyTabBar";
 import { HomeTab } from "./screens/HomeTab";
 import { StatsScreen } from "./screens/StatsScreen";
 
@@ -93,8 +93,8 @@ let AppEntryPoint = App;
 
 import breaches from "./data/breaches.json";
 import vulnerabilities from "./data/vulnerabilities.json";
-import store, { setData } from "./store";
-import { retrieveData, storeData } from "./utils/store";
+import store, { setData } from "./store/store";
+import { retrieveData, storeData } from "./utils/asyncStore";
 
 store.dispatch(setData(breaches));
 store.dispatch(setData(vulnerabilities));

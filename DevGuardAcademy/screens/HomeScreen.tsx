@@ -16,8 +16,8 @@ type Props = {
 export function HomeScreenComponent({ navigation }: Props) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
       <View style={styles.container}>
+      <Text>List of screens</Text>
         <Button
           title="Go to Details"
           onPress={() =>

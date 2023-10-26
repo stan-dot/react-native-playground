@@ -1,10 +1,9 @@
-// StatsPanel.js
 import React from "react";
-import { useSelector } from "react-redux";
 import { StyleSheet, Text, View } from "react-native";
+import { useAppSelector } from "../../store/hook";
 
 const StatsPanel = () => {
-  const stats = useSelector((state) => state.stats); // Assuming you named your reducer 'stats'
+  const stats = useAppSelector((state) => state.stats); // Assuming you named your reducer 'stats'
 
   return (
     <View style={styles.container}>

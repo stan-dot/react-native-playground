@@ -8,6 +8,9 @@ import {
 import { TabStackParamList } from "../App";
 import { RouteProp } from "@react-navigation/core";
 import { HomeStackParamList } from "./HomeTab";
+import { RootState } from "../store/store";
+import { useAppSelector } from "../store/hook";
+import { selectDeckById } from "../store/reselect/selectDeckById";
 
 type Props = {
   navigation:
@@ -37,10 +40,12 @@ type DeckData = {
 // Study Button: Starts the study mode for that deck.
 // Add Card Button: Opens a modal or new screen to add a new card to the deck.
 // todo first load the cards given the deck
-
 export function DetailsScreen({ navigation, route }: Props) {
   const { deckId } = route.params;
-  const data = useSelector((state) => state.data);
+  const decks = useAppSelector((state: RootState) =>
+    selectDeckById(state, deckId)
+  );
+
   return (
     // <CardStackNavigator.Navigator>
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
