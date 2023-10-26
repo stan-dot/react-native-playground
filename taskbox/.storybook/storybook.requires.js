@@ -12,9 +12,9 @@ global.STORIES = [
   {
     titlePrefix: "",
     directory: "./components",
-    files: "**/*.stories.?(ts|tsx|js|jsx)",
+    files: "**/*.stories.@(ts|tsx|js|jsx)",
     importPathMatcher:
-      "^\\.[\\\\/](?:components(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$",
+      "^\\.[\\\\/](?:components(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)\\/|\\/|$)(?!\\.)(?=.)[^/]*?\\.stories\\.(ts|tsx|js|jsx))$",
   },
 ];
 
@@ -46,7 +46,9 @@ try {
 } catch {}
 
 const getStories = () => {
-  return {};
+  return {
+    "./components/Task.stories.jsx": require("../components/Task.stories.jsx"),
+  };
 };
 
 configure(getStories, module, false);
