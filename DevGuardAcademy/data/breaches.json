@@ -1,0 +1,54 @@
+{
+  "caseStudies": [
+    {
+      "id": 1,
+      "front": "Heartbleed Bug (2014)",
+      "back": "A vulnerability in OpenSSL impacting internet data security. Lesson: The importance of security in open-source projects and regular code audits."
+    },
+    {
+      "id": 2,
+      "front": "Equifax Data Breach (2017)",
+      "back": "Breach due to unpatched Apache Struts, exposing data of 147M consumers. Lesson: Importance of timely software updates and data protection."
+    },
+    {
+      "id": 3,
+      "front": "Stuxnet Worm (2010)",
+      "back": "A computer worm targeting Iran's nuclear facilities. Lesson: Software's potential to impact physical infrastructure and cyber warfare risks."
+    },
+    {
+      "id": 4,
+      "front": "Sony PlayStation Network Outage (2011)",
+      "back": "External intrusion led to personal data compromise. Lesson: Robust network security's importance and data breaches' impact on brand trust."
+    },
+    {
+      "id": 5,
+      "front": "Target Data Breach (2013)",
+      "back": "Cyberattack on POS systems led to credit card theft. Lesson: Vulnerabilities in POS systems and the need for secure payment solutions."
+    },
+    {
+      "id": 6,
+      "front": "WannaCry Ransomware Attack (2017)",
+      "back": "Ransomware exploiting Windows, affecting thousands. Lesson: The impact of ransomware and keeping systems updated against vulnerabilities."
+    },
+    {
+      "id": 7,
+      "front": "SolarWinds Cyberattack (2020)",
+      "back": "Supply chain attack affecting government and businesses. Lesson: Risks in software supply chain and rigorous security in development."
+    },
+    {
+      "id": 8,
+      "front": "NotPetya Cyberattack (2017)",
+      "back": "Malware initially targeting Ukraine, caused global damage. Lesson: Cyber weapons' economic impact and necessity of cybersecurity collaboration."
+    },
+    {
+      "id": 9,
+      "front": "Adobe Data Breach (2013)",
+      "back": "Breach where attackers stole Adobe user data. Lesson: Strong encryption necessity for data storage and risks of storing sensitive data."
+    },
+    {
+      "id": 10,
+      "front": "Capital One Data Breach (2019)",
+      "back": "Breach in Capital One's system exposed customer information. Lesson: Vulnerabilities in cloud systems and importance of access controls."
+    }
+  ]
+}

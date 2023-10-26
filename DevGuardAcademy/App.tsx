@@ -1,11 +1,29 @@
-import { StyleSheet, Text, View } from "react-native";
 import Constants from "expo-constants";
+import { StyleSheet, Text, View } from "react-native";
+
+import { NavigationContainer } from "@react-navigation/native";
+
+import { createTheme, ThemeProvider } from "@rneui/themed";
+
+const theme = createTheme({
+  lightColors: {
+    primary: "#e7e7e8",
+  },
+  darkColors: {
+    primary: "#000",
+  },
+  mode: "light",
+});
 
 function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        <View style={styles.container}>
+          <Text>Open up App.tsx to start working on your app!</Text>
+        </View>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 
