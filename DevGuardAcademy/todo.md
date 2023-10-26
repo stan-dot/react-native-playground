@@ -8,3 +8,7 @@
 - [ ] outline future features
 - [ ] publish
 - [ ] create a landing page
+
+## interim
+- [ ] add modals capabiltiy
+- [ ] add good bottom navigation

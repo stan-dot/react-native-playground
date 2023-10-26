@@ -1,8 +1,16 @@
 import { View } from "react-native";
 import { Button, Text } from "@rneui/themed";
-import { styles } from "../App";
+import { HomeScreenNavigationProp, styles } from "../App";
 
-export function HomeScreen({ navigation }) {
+type Props = {
+  navigation: HomeScreenNavigationProp;
+}
+// todo list of decks
+// add deck button
+// stats icon - button to the screen, pushed onto the stack
+export function HomeScreen(
+  { navigation }: Props,
+) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>

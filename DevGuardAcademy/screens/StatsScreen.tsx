@@ -1,13 +1,10 @@
 import { View } from "react-native";
 import { Button, Text } from "@rneui/themed";
 
+// Daily Progress: Shows how many cards were studied and the accuracy rate.
+// Overall Progress: Displays overall performance metrics.
 
-// Deck Title: At the top.
-// List of Cards: Displays all the cards in the deck.
-// Study Button: Starts the study mode for that deck.
-// Add Card Button: Opens a modal or new screen to add a new card to the deck.
-
-export function DetailsScreen({ navigation }) {
+export function StatsScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Details Screen</Text>

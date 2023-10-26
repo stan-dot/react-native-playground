@@ -12,7 +12,7 @@ List of Cards: Displays all the cards in the deck.
 Study Button: Starts the study mode for that deck.
 Add Card Button: Opens a modal or new screen to add a new card to the deck.
 
-## Card Creation/Edit Screen:
+## Card Creation/Edit Screen: - this is as a modal
 Question Input: Text input for the card's question.
 Answer Input: Text input for the card's answer.
 Save Button: Saves the card.
