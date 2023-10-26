@@ -1,10 +1,12 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Constants from "expo-constants";
-import { StyleSheet, Text, View } from "react-native";
-
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-
 import { createTheme, ThemeProvider } from "@rneui/themed";
+import { DetailsScreen } from "./screens/DetailsScreen";
+import { HomeScreen } from "./screens/HomeScreen";
 
+const Stack = createNativeStackNavigator();
 const theme = createTheme({
   lightColors: {
     primary: "#e7e7e8",
@@ -19,9 +21,14 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        <View style={styles.container}>
-          <Text>Open up App.tsx to start working on your app!</Text>
-        </View>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ title: "Overview" }}
+          />
+          <Stack.Screen name="Details" component={DetailsScreen} />
+        </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>
   );
@@ -33,7 +40,7 @@ if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
   AppEntryPoint = require("./.ondevice").default;
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
