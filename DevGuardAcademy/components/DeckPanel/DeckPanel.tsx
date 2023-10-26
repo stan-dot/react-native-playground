@@ -1,12 +1,21 @@
-// DeckPanel.js
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { Button, Text } from "@rneui/themed";
+import { Deck } from "../../store/types";
 
-export default function DeckPanel({ deck }) {
+type DeckPanelProps = {
+  deck: Deck;
+  callback: any;
+};
+export default function DeckPanel({ deck, callback }: DeckPanelProps) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{deck.title}</Text>
       <Text style={styles.metadata}>{deck.cards.length} cards</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => callback(deck.id)}
+      />
     </View>
   );
 }
@@ -14,7 +23,7 @@ export default function DeckPanel({ deck }) {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginVertical: 5,
     borderRadius: 5,
     shadowOpacity: 0.3,
@@ -23,14 +32,14 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
-    elevation: 3,  // for Android
+    elevation: 3, // for Android
   },
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   metadata: {
     fontSize: 14,
-    color: 'gray',
+    color: "gray",
   },
 });

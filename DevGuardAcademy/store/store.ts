@@ -1,16 +1,14 @@
 
 import { configureStore } from '@reduxjs/toolkit';
-import breachesReducer from './breachesSlice';
 import middleware, { loadStateFromAsyncStorage } from './middleware';
-import vulnerabilitiesReducer from './vulnerabilitiesSlice';
+import cardsSlice from './cardsSlice';
 
 const preloadedState = await loadStateFromAsyncStorage();
 
 const store = configureStore({
   preloadedState,
   reducer: {
-    breaches: breachesReducer,
-    vulnerabilities: vulnerabilitiesReducer,
+    decks: cardsSlice.arguments,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(...middleware)
 });

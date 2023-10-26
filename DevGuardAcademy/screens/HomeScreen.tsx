@@ -4,29 +4,28 @@ import { View } from "react-native";
 import { styles, TabStackParamList } from "../App";
 import { HomeStackParamList } from "./HomeTab";
 import { RouteProp } from "@react-navigation/core";
+import ScrollablePanel from "../components/ScrollablePanel/ScrollablePanel";
+import AddDeckButton from "../components/AddDeckButton/AddDeckButton";
 
 type Props = {
   navigation: NativeStackNavigationProp<HomeStackParamList, "Home">;
   route: RouteProp<HomeStackParamList, "Home">;
 };
 
-// todo add these functionalities
-//  list of decks
-// add deck button
 export function HomeScreenComponent({ navigation }: Props) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <View style={styles.container}>
-      <Text>List of screens</Text>
-        <Button
-          title="Go to Details"
-          onPress={() =>
-            navigation.navigate("Details", { deckId: "1" })}
-        />
+        <Text>List of screens</Text>
         <Button
           onPress={() =>
             navigation.navigate("CardModal", { deckId: "1", cardId: "1" })}
           title="Open Modal"
+        />
+        <AddDeckButton />
+        <ScrollablePanel
+          callback={(deckid) => () =>
+            navigation.navigate("Details", { deckId: deckid })}
         />
       </View>
     </View>

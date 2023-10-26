@@ -20,21 +20,21 @@ amplitude.init(API_KEY,"",  {
   serverZone:'EU'
 });
 
- const amplitudeMiddleware:Middleware<{}, RootState> = (store:RootState) => next => action => {
+ const amplitudeMiddleware:Middleware<{}, RootState> = (store) => next => action => {
   if (action.type === 'START_DECK') {
-    amplitude.getInstance().logEvent('DECK_STARTED');
+    amplitude.logEvent('DECK_STARTED');
   }
 
   if (action.type === 'COMPLETE_DECK') {
-    amplitude.getInstance().logEvent('DECK_COMPLETED');
+    amplitude.logEvent('DECK_COMPLETED');
   }
 
-  amplitude.getInstance().logEvent('DECK_COMPLETED', { deckId: '123', duration: 3600 });
+  amplitude.logEvent('DECK_COMPLETED', { deckId: '123', duration: 3600 });
 
   return next(action);
 };
 
- const saveToAsyncStorage:Middleware<{}, RootState> = (store:RootState) => next => async (action) => {
+ const saveToAsyncStorage:Middleware<{}, RootState> = (store) => next => async (action) => {
   // Let the action pass to the next middleware or reducer
   let result = next(action);
 

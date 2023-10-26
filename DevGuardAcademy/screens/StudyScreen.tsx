@@ -3,19 +3,26 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, Text } from "@rneui/themed";
 import { View } from "react-native";
 import { HomeStackParamList } from "./HomeTab";
+import { selectDeckById } from "../store/reselect/selectDeckById";
+import { useAppSelector } from "../store/hook";
+import StudyPanel from "../components/StudyPanel/StudyPanel";
 
-// Current Card Display: Shows the front (question) of the card.
-// Flip Button: Toggles between the question and answer.
-// Correct/Wrong Buttons: User selects after flipping the card to mark their response.
-// Progress Bar: Visually shows how many cards are left to study in the session.
 
 type Props = {
   navigation: NativeStackNavigationProp<HomeStackParamList, "Study">;
   route: RouteProp<HomeStackParamList, "Study">;
 };
 
-// todo either go to here through the home screen directly or from details of a screen
-export function StudyScreen({ navigation }: Props) {
+export function StudyScreen({ navigation, route }: Props) {
+  const { deckId } = route.params;
+  const deck = useAppSelector((state) => selectDeckById(state, deckId));
+  if (!deck) {
+    return (
+      <View>
+        <Text>No such deck to study!</Text>
+      </View>
+    );
+  }
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Study Screen</Text>
@@ -28,6 +35,18 @@ export function StudyScreen({ navigation }: Props) {
         title="Go back to first screen in stack"
         onPress={() => navigation.popToTop()}
       />
+      {deck.cards
+        ? (
+          <StudyPanel
+            cards={deck!.cards.map((c) => {
+              return { front: c.question, back: c.answer };
+            })}
+            finishedCallback={() => {
+              console.log("finished this deck!");
+            }}
+          />
+        )
+        : <Text>No cards in this deck!</Text>}
     </View>
   );
 }
