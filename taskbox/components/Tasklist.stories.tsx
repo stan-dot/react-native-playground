@@ -1,9 +1,9 @@
 import { Default as TaskStory } from "./Task.stories";
 import { View } from "react-native";
-import { MyTaskList } from "./Tasklist";
+import { TaskList } from "./Tasklist";
 
 export default {
-  component: MyTaskList,
+  component: TaskList,
   title: "TaskList",
   decorators: [
     (Story) => (
