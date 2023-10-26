@@ -7,6 +7,8 @@ import { StyleSheet, View } from "react-native";
 import { MyTabBar } from "./components/MyTabBar";
 import { HomeTab } from "./screens/HomeTab";
 import { StatsScreen } from "./screens/StatsScreen";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 export type TabStackParamList = {
   HomeTab: undefined;
@@ -67,50 +69,31 @@ function RegisterScreen() {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <RootStack.Navigator>
-          <RootStack.Screen
-            name="TabStack"
-            component={BottomTabNavigator}
-            options={{ headerShown: false }}
-          />
-          <RootStack.Screen
-            name="Login"
-            component={LoginScreen}
-          />
-          <RootStack.Screen
-            name="Register"
-            component={RegisterScreen}
-          />
-        </RootStack.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <RootStack.Navigator>
+            <RootStack.Screen
+              name="TabStack"
+              component={BottomTabNavigator}
+              options={{ headerShown: false }}
+            />
+            <RootStack.Screen
+              name="Login"
+              component={LoginScreen}
+            />
+            <RootStack.Screen
+              name="Register"
+              component={RegisterScreen}
+            />
+          </RootStack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
+    </Provider>
   );
 }
 
 let AppEntryPoint = App;
-
-import breaches from "./data/breaches.json";
-import vulnerabilities from "./data/vulnerabilities.json";
-import store, { setData } from "./store/store";
-import { retrieveData, storeData } from "./utils/asyncStore";
-
-store.dispatch(setData(breaches));
-store.dispatch(setData(vulnerabilities));
-
-try {
-  retrieveData("myDataKey").then((storedData) => {
-    if (storedData) {
-      store.dispatch(setData(storedData));
-    } else {
-      store.dispatch(setData(data));
-    }
-  });
-} catch (e) {
-  console.error(e);
-}
-
 if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
   AppEntryPoint = require("./.ondevice").default;
 }

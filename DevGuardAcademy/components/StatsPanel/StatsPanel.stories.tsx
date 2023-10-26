@@ -1,4 +1,3 @@
-// StatsPanel.stories.js
 import React from "react";
 import { storiesOf } from "@storybook/react-native";
 import { Provider } from "react-redux";

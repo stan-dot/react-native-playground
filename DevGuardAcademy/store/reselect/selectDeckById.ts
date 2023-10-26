@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { Deck, RootState } from '../store';
+import { Deck, RootState } from '../types';
 
 const getDecks = (state: RootState) => state.decks;
 

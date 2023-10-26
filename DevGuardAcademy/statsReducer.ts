@@ -1,4 +1,3 @@
-// statsReducer.js
 const initialState = {
   totalCardsStudied: 0,
   cardsKnown: 0,

@@ -1,34 +1,8 @@
 
-import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import breachesReducer from './breachesSlice';
+import middleware, { loadStateFromAsyncStorage } from './middleware';
 import vulnerabilitiesReducer from './vulnerabilitiesSlice';
-import { loadStateFromAsyncStorage, saveToAsyncStorage, amplitudeMiddleware } from './middleware';
-
-export type Card = {
-  id: string;
-  question: string;
-  answer: string;
-};
-
-export type Deck = {
-  id: string;
-  title: string;
-  cards: Card[];
-};
-
-export type Stats = {
-  totalCardsStudied: number;
-  cardsKnown: number;
-  cardsUnknown: number;
-  studyStreak: number;
-  categoriesMastered: string[];
-};
-
-
-export type RootState = {
-  decks: Deck[];
-  stats: Stats;
-};
 
 const preloadedState = await loadStateFromAsyncStorage();
 
@@ -38,10 +12,11 @@ const store = configureStore({
     breaches: breachesReducer,
     vulnerabilities: vulnerabilitiesReducer,
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(saveToAsyncStorage, amplitudeMiddleware)
-
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(...middleware)
 });
 
 export default store;
 
+// store.dispatch(setBreaches(breaches));
+// store.dispatch(setVulnerabilities(vulnerabilities));
 

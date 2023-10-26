@@ -1,4 +1,3 @@
-// ScrollablePanel.js
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { useAppSelector } from "../../store/hook";

@@ -8,7 +8,7 @@ import {
 import { TabStackParamList } from "../App";
 import { RouteProp } from "@react-navigation/core";
 import { HomeStackParamList } from "./HomeTab";
-import { RootState } from "../store/store";
+import { RootState } from "../store/types";
 import { useAppSelector } from "../store/hook";
 import { selectDeckById } from "../store/reselect/selectDeckById";
 

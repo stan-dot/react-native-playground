@@ -15,7 +15,6 @@
 - [ ] ok maybe if sdk is there the safety is less relevant, but still need to setup with vercel https://vercel.com/new/templates/other/nodejs-serverless-function-express
 - [x] consider running it as a side effect https://redux-saga.js.org/ - nah, deprecated it seems
 
-
 ## marketing
 - [ ] outline future features
 - [ ] publish
