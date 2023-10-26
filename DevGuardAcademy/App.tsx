@@ -91,6 +91,26 @@ function App() {
 
 let AppEntryPoint = App;
 
+import breaches from "./data/breaches.json";
+import vulnerabilities from "./data/vulnerabilities.json";
+import store, { setData } from "./store";
+import { retrieveData, storeData } from "./utils/store";
+
+store.dispatch(setData(breaches));
+store.dispatch(setData(vulnerabilities));
+
+try {
+  retrieveData("myDataKey").then((storedData) => {
+    if (storedData) {
+      store.dispatch(setData(storedData));
+    } else {
+      store.dispatch(setData(data));
+    }
+  });
+} catch (e) {
+  console.error(e);
+}
+
 if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
   AppEntryPoint = require("./.ondevice").default;
 }

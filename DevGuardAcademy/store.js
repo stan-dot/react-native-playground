@@ -55,6 +55,18 @@ const store = configureStore({
 
 export default store;
 
+import { createSlice } from '@reduxjs/toolkit';
+
+const dataSlice = createSlice({
+  name: 'data',
+  initialState: [],
+  reducers: {
+    setData: (state, action) => action.payload,
+  },
+});
+
+export const { setData } = dataSlice.actions;
+
 const amplitudeMiddleware = store => next => action => {
   if (action.type === 'START_DECK') {
     amplitude.getInstance().logEvent('DECK_STARTED');

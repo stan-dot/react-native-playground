@@ -1,4 +1,5 @@
 import { View } from "react-native";
+import { useSelector } from "react-redux";
 import { Button, Text } from "@rneui/themed";
 import {
   createNativeStackNavigator,
@@ -24,6 +25,13 @@ export type DetailsScreenParamList = {
 
 // const CardStackNavigator = createNativeStackNavigator();
 
+type DeckData = {
+  id: string;
+  title: string;
+  categories: string[];
+  // cards - idk if persistence remotely with stuff like mongodb or not, if just locally
+};
+
 // Deck Title: At the top.
 // List of Cards: Displays all the cards in the deck.
 // Study Button: Starts the study mode for that deck.
@@ -32,6 +40,7 @@ export type DetailsScreenParamList = {
 
 export function DetailsScreen({ navigation, route }: Props) {
   const { deckId } = route.params;
+  const data = useSelector((state) => state.data);
   return (
     // <CardStackNavigator.Navigator>
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
