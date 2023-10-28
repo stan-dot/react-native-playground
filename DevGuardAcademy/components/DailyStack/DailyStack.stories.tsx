@@ -1,5 +1,8 @@
-// mockData.ts
-export const mockFlashcards = [
+import { ComponentMeta, ComponentStory } from "@storybook/react-native";
+import { View } from "react-native";
+import DailyStack from "./DailyStack";
+
+const mockFlashcards = [
   {
     front: "What is React?",
     back: "A JavaScript library for building user interfaces.",
@@ -11,10 +14,23 @@ export const mockFlashcards = [
   },
   // ... Add more flashcards as needed
 ];
-import React from "react";
-import { storiesOf } from "@storybook/react-native";
-import DailyStack from "./DailyStack";
 
-storiesOf("DailyStack", module)
-  .add("Default", () => <DailyStack cards={mockFlashcards} />)
-  .add("Empty State", () => <DailyStack cards={[]} />);
+const DailyStackMeta: ComponentMeta<typeof DailyStack> = {
+  title: "DailyStack",
+  component: DailyStack,
+  args: {},
+  decorators: [
+    (Story) => (
+      <View style={{ padding: 16 }}>
+        <Story />
+      </View>
+    ),
+  ],
+};
+
+export default DailyStackMeta;
+type DailyStackStory = ComponentStory<typeof DailyStack>;
+export const Default: DailyStackStory = (args) => (
+  <DailyStack cards={mockFlashcards} />
+);
+export const EmptyState: DailyStackStory = (args) => <DailyStack cards={[]} />;
