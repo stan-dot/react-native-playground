@@ -1,58 +1,73 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AnyAction, Dispatch, Middleware, MiddlewareArray, Store } from '@reduxjs/toolkit';
-import { RootState } from './types';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  AnyAction,
+  Dispatch,
+  Middleware,
+  MiddlewareArray,
+  Store,
+} from "@reduxjs/toolkit";
+import { RootState } from "./types";
 
-import * as amplitude from '@amplitude/analytics-react-native';
+import * as amplitude from "@amplitude/analytics-react-native";
+
+// let userId = await AsyncStorage.getItem("userId");
+// if (!userId) {
+//   userId = generateRandomUserId(); // Implement this function to generate a unique ID
+//   await AsyncStorage.setItem("userId", userId);
+// }
 
 const API_KEY = process.env.EXPO_PUBLIC_AMPLITUDE_KEY;
-if (!API_KEY) {
-  throw Error(' no api key! ');
-}
+// console.log(API_KEY);
+// if (!API_KEY) {
+//   throw Error(" no api key! ");
+// }
 
-// todo empty user id might be bad
-amplitude.init(API_KEY,"",  {
-  // Events queued in memory will flush when number of events exceed upload threshold
-  // Default value is 30
-  flushQueueSize: 50, 
-  // Events queue will flush every certain milliseconds based on setting
-  // Default value is 10000 milliseconds
-  flushIntervalMillis: 20000,
-  serverZone:'EU'
-});
+// // todo empty user id might be bad
+// amplitude.init(API_KEY, "", {
+//   // Events queued in memory will flush when number of events exceed upload threshold
+//   // Default value is 30
+//   flushQueueSize: 50,
+//   // Events queue will flush every certain milliseconds based on setting
+//   // Default value is 10000 milliseconds
+//   flushIntervalMillis: 20000,
+//   serverZone: "EU",
+// });
 
- const amplitudeMiddleware:Middleware<{}, RootState> = (store) => next => action => {
-  if (action.type === 'START_DECK') {
-    amplitude.logEvent('DECK_STARTED');
-  }
+const amplitudeMiddleware: Middleware<{}, RootState> =
+  (store) => (next) => (action) => {
+    if (action.type === "START_DECK") {
+      amplitude.logEvent("DECK_STARTED");
+    }
 
-  if (action.type === 'COMPLETE_DECK') {
-    amplitude.logEvent('DECK_COMPLETED');
-  }
+    if (action.type === "COMPLETE_DECK") {
+      amplitude.logEvent("DECK_COMPLETED");
+    }
 
-  amplitude.logEvent('DECK_COMPLETED', { deckId: '123', duration: 3600 });
+    amplitude.logEvent("DECK_COMPLETED", { deckId: "123", duration: 3600 });
 
-  return next(action);
-};
+    return next(action);
+  };
 
- const saveToAsyncStorage:Middleware<{}, RootState> = (store) => next => async (action) => {
-  // Let the action pass to the next middleware or reducer
-  let result = next(action);
+const saveToAsyncStorage: Middleware<{}, RootState> =
+  (store) => (next) => async (action) => {
+    // Let the action pass to the next middleware or reducer
+    let result = next(action);
 
-  // After state is updated, save it to AsyncStorage
-  const state = store.getState();
+    // After state is updated, save it to AsyncStorage
+    const state = store.getState();
 
-  try {
-    await AsyncStorage.setItem('MY_APP_STATE', JSON.stringify(state));
-  } catch (error) {
-    console.error("Error saving state to AsyncStorage:", error);
-  }
+    try {
+      await AsyncStorage.setItem("MY_APP_STATE", JSON.stringify(state));
+    } catch (error) {
+      console.error("Error saving state to AsyncStorage:", error);
+    }
 
-  return result;
-};
+    return result;
+  };
 
 export async function loadStateFromAsyncStorage() {
   try {
-    const savedState = await AsyncStorage.getItem('MY_APP_STATE');
+    const savedState = await AsyncStorage.getItem("MY_APP_STATE");
     if (savedState) {
       return JSON.parse(savedState);
     }
@@ -65,17 +80,19 @@ export async function loadStateFromAsyncStorage() {
 }
 
 // const statsMiddleware: Middleware<{}, RootState> = (store:Store<RootState>) => (next:Dispatch<AnyAction>) => (action:AnyAction) => {
-const statsMiddleware: Middleware<{}, RootState> = (store) => (next) => (action) => {
-  let result = next(action);
+const statsMiddleware: Middleware<{}, RootState> =
+  (store) => (next) => (action) => {
+    let result = next(action);
 
-  if (action.type === 'SOME_COMPLEX_ACTION') {
-    const currentState = store.getState();
-    console.log('decks: ', currentState.decks);
-    // Do complex calculations or side effects based on the current state and the action
-    // Dispatch new actions if needed to update the stats
-  }
+    if (action.type === "SOME_COMPLEX_ACTION") {
+      const currentState = store.getState();
+      console.log("decks: ", currentState.decks);
+      // Do complex calculations or side effects based on the current state and the action
+      // Dispatch new actions if needed to update the stats
+    }
 
-  return result;
-};
+    return result;
+  };
 
-export default [amplitudeMiddleware, saveToAsyncStorage, statsMiddleware];
+// export default [amplitudeMiddleware, saveToAsyncStorage, statsMiddleware];
+export default [ saveToAsyncStorage, statsMiddleware];

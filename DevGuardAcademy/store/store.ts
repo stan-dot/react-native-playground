@@ -2,15 +2,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import middleware, { loadStateFromAsyncStorage } from './middleware';
 import cardsSlice from './cardsSlice';
-
-const preloadedState = await loadStateFromAsyncStorage();
+import statsReducer from './statsReducer';
 
 const store = configureStore({
-  preloadedState,
   reducer: {
-    decks: cardsSlice.arguments,
+    decks: cardsSlice,
+    stats: statsReducer
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(...middleware)
+  // middleware: getDefaultMiddleware => getDefaultMiddleware().concat(...middleware)
 });
 
 export default store;
