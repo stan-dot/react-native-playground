@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Card, Deck } from "../types";
+import { vulnerabilitiesDeck } from "../../data/vulnerabilities";
 
 export const recordActionToAmplitude = createAsyncThunk(
   "deck/recordActionToAmplitude",
@@ -23,7 +24,7 @@ export type DecksSliceState = {
 
 const initialDecksState: DecksSliceState = {
   currentDeckId: 0,
-  decks: [],
+  decks: [vulnerabilitiesDeck],
 };
 
 const decksSlice = createSlice({

@@ -54,7 +54,7 @@ export function HomeTab(
       <HomeStack.Group screenOptions={{ presentation: "modal" }}>
         <HomeStack.Screen
           name="CardModal"
-          component={CardModal}
+          component={CardModal as React.FC}
           options={{ headerShown: false }}
         />
       </HomeStack.Group>

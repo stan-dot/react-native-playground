@@ -23,10 +23,12 @@ export function HomeScreenComponent({ navigation }: Props) {
           title="Open Modal"
         />
         <AddDeckButton />
-        <ScrollablePanel
+        {
+          /* <ScrollablePanel
           callback={(deckid) => () =>
             navigation.navigate("Details", { deckId: deckid })}
-        />
+        /> */
+        }
       </View>
     </View>
   );

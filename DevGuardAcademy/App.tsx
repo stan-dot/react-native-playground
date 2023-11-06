@@ -46,7 +46,7 @@ function BottomTabNavigator() {
           component={HomeTab as React.FC}
           options={{ title: "Overview" }}
         />
-        <Tab.Screen name="Stats" component={StatsScreen as React.FC} />
+        {/* <Tab.Screen name="Stats" component={StatsScreen as React.FC} /> */}
       </Tab.Group>
     </Tab.Navigator>
   );
@@ -79,14 +79,14 @@ function App() {
               component={BottomTabNavigator}
               options={{ headerShown: false }}
             />
-            <RootStack.Screen
+            {/* <RootStack.Screen
               name="Login"
               component={LoginScreen}
             />
             <RootStack.Screen
               name="Register"
               component={RegisterScreen}
-            />
+            /> */}
           </RootStack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
