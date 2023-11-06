@@ -7,7 +7,6 @@ const getDeckId = (_: RootState, deckId: string) => deckId;
 
 const getCardId = (_: any, __: any, cardId: string| undefined) => cardId;
 
-
 const defaultCard: Card = {
   id: "99999",
   question: "Here put your question",

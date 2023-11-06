@@ -10,6 +10,7 @@ export type Deck = {
   id: string;
   title: string;
   cards: Card[];
+  categories?:string[]
 };
 
 export type StatsState = {

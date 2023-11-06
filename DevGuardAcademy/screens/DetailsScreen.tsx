@@ -23,13 +23,6 @@ export type DetailsScreenParamList = {
   };
 };
 
-type DeckData = {
-  id: string;
-  title: string;
-  categories: string[];
-  // cards - idk if persistence remotely with stuff like mongodb or not, if just locally
-};
-
 export function DetailsScreen({ navigation, route }: Props) {
   const { deckId } = route.params;
   const deck = useAppSelector((state: RootState) =>

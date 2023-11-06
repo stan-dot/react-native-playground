@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, Text } from "react-native";
 import { useAppSelector } from "../../store/hook";
 import DeckPanel from "../DeckPanel/DeckPanel";
 
@@ -8,13 +8,17 @@ type ScrollablePanelProps = {
 };
 
 export default function ScrollablePanel({ callback }: ScrollablePanelProps) {
-  const decks = useAppSelector((state) => state.deckState.decks);
+  // const decks = useAppSelector((state) => state.deckState.decks);
 
   return (
     <ScrollView style={styles.container}>
-      {decks.map((deck) => (
-        <DeckPanel key={deck.title} deck={deck} callback={callback} />
-      ))}
+      <Text>Testing scroll view</Text>
+      {
+        /* {decks &&
+        decks.map((deck) => (
+          <DeckPanel key={deck.title} deck={deck} callback={callback} />
+        ))} */
+      }
     </ScrollView>
   );
 }

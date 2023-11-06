@@ -16,6 +16,11 @@
 
 the key missing pieces are the amplitude integration and redux. both are new to me, and expo app is not something I'm that proficient with to integrate these smoothly
 
+## Bug fixes
+- [ ] scrollable panel error
+- [ ] modal error
+- [ ] need to navigate all the pages safely
+
 ## interim
 - [ ] change view into safearea view at the top level https://reactnative.dev/docs/safeareaview
 
