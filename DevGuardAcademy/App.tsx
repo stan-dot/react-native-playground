@@ -9,7 +9,7 @@ import { HomeTab } from "./screens/HomeTab";
 import { StatsScreen } from "./screens/StatsScreen";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import { loadStateFromAsyncStorage } from "./store/middleware";
+import { loadStateFromAsyncStorage } from "./store/asyncStorage";
 
 export type TabStackParamList = {
   HomeTab: undefined;
@@ -99,9 +99,9 @@ if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
   AppEntryPoint = require("./.ondevice").default;
 }
 
-// todo add event for state load
 loadStateFromAsyncStorage().then((state) => {
-  store.dispatch(state);
+  // store.dispatch(state);
+  // todo fix this
 });
 
 export const styles = StyleSheet.create({

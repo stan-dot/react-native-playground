@@ -1,19 +1,15 @@
 
 import { configureStore } from '@reduxjs/toolkit';
-import middleware, { loadStateFromAsyncStorage } from './middleware';
-import cardsSlice from './cardsSlice';
-import statsReducer from './statsReducer';
+import decksReducer from './slices/decksSlice';
+import statsReducer from './slices/statsSlice';
+import userReducer from './slices/userSlice';
 
 const store = configureStore({
   reducer: {
-    decks: cardsSlice,
-    stats: statsReducer
+    decks: decksReducer,
+    stats: statsReducer,
+    user:userReducer
   },
-  // middleware: getDefaultMiddleware => getDefaultMiddleware().concat(...middleware)
 });
 
 export default store;
-
-// store.dispatch(setBreaches(breaches));
-// store.dispatch(setVulnerabilities(vulnerabilities));
-

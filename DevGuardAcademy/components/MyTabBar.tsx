@@ -49,6 +49,7 @@ export function MyTabBar(
             onPress={onPress}
             onLongPress={onLongPress}
             style={{ flex: 1 }}
+            key={`nav-link-${index}`}
           >
             <Text style={{ color }}>
               {label}

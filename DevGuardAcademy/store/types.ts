@@ -1,3 +1,5 @@
+import { DecksSliceState } from "./slices/decksSlice";
+
 export type Card = {
   id: string;
   question: string;
@@ -10,7 +12,7 @@ export type Deck = {
   cards: Card[];
 };
 
-export type Stats = {
+export type StatsState = {
   totalCardsStudied: number;
   cardsKnown: number;
   cardsUnknown: number;
@@ -20,6 +22,6 @@ export type Stats = {
 
 
 export type RootState = {
-  decks: Deck[];
-  stats: Stats;
+  deckState: DecksSliceState;
+  stats: StatsState;
 };

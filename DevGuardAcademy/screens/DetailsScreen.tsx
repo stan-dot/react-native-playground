@@ -5,7 +5,7 @@ import { View } from "react-native";
 import AddCardButton from "../components/AddCardButton/AddCardButton";
 import CardsList from "../components/CardList/CardList";
 import { useAppSelector } from "../store/hook";
-import { selectDeckById } from "../store/reselect/selectDeckById";
+import { selectDeckById } from "../store/selectors/selectDeckById";
 import { RootState } from "../store/types";
 import { HomeStackParamList } from "./HomeTab";
 

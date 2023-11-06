@@ -1,12 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {
-  ComponentMeta,
-  ComponentStory
-} from "@storybook/react-native";
+import { ComponentMeta, ComponentStory } from "@storybook/react-native";
 import React from "react";
 import { View } from "react-native";
 import { Provider } from "react-redux";
-import statsReducer from "../../store/statsReducer";
+import statsReducer from "../../store/slices/statsSlice";
 import StatsPanel from "./StatsPanel";
 
 const store = configureStore({

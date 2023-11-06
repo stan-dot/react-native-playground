@@ -7,6 +7,7 @@ type DeckPanelProps = {
   deck: Deck;
   callback: any;
 };
+
 export default function DeckPanel({ deck, callback }: DeckPanelProps) {
   return (
     <View style={styles.container}>

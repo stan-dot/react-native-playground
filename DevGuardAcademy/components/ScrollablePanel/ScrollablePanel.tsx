@@ -8,7 +8,7 @@ type ScrollablePanelProps = {
 };
 
 export default function ScrollablePanel({ callback }: ScrollablePanelProps) {
-  const decks = useAppSelector((state) => state.decks); // Adjust based on your Redux state structure
+  const decks = useAppSelector((state) => state.deckState.decks);
 
   return (
     <ScrollView style={styles.container}>

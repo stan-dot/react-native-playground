@@ -1,14 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
-  AnyAction,
-  Dispatch,
-  Middleware,
-  MiddlewareArray,
-  Store,
+  Middleware
 } from "@reduxjs/toolkit";
 import { RootState } from "./types";
 
-import * as amplitude from "@amplitude/analytics-react-native";
 
 // let userId = await AsyncStorage.getItem("userId");
 // if (!userId) {
@@ -33,22 +28,7 @@ const API_KEY = process.env.EXPO_PUBLIC_AMPLITUDE_KEY;
 //   serverZone: "EU",
 // });
 
-const amplitudeMiddleware: Middleware<{}, RootState> =
-  (store) => (next) => (action) => {
-    if (action.type === "START_DECK") {
-      amplitude.logEvent("DECK_STARTED");
-    }
-
-    if (action.type === "COMPLETE_DECK") {
-      amplitude.logEvent("DECK_COMPLETED");
-    }
-
-    amplitude.logEvent("DECK_COMPLETED", { deckId: "123", duration: 3600 });
-
-    return next(action);
-  };
-
-const saveToAsyncStorage: Middleware<{}, RootState> =
+export const saveToAsyncStorage: Middleware<{}, RootState> =
   (store) => (next) => async (action) => {
     // Let the action pass to the next middleware or reducer
     let result = next(action);
@@ -79,20 +59,3 @@ export async function loadStateFromAsyncStorage() {
   return undefined;
 }
 
-// const statsMiddleware: Middleware<{}, RootState> = (store:Store<RootState>) => (next:Dispatch<AnyAction>) => (action:AnyAction) => {
-const statsMiddleware: Middleware<{}, RootState> =
-  (store) => (next) => (action) => {
-    let result = next(action);
-
-    if (action.type === "SOME_COMPLEX_ACTION") {
-      const currentState = store.getState();
-      console.log("decks: ", currentState.decks);
-      // Do complex calculations or side effects based on the current state and the action
-      // Dispatch new actions if needed to update the stats
-    }
-
-    return result;
-  };
-
-// export default [amplitudeMiddleware, saveToAsyncStorage, statsMiddleware];
-export default [ saveToAsyncStorage, statsMiddleware];

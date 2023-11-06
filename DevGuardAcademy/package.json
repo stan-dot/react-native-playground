@@ -31,6 +31,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@rneui/base": "^4.0.0-rc.8",
     "@rneui/themed": "^4.0.0-rc.8",
+    "arkit": "^1.6.4",
     "expo": "^49.0.7",
     "expo-constants": "~14.4.2",
     "expo-linking": "~5.0.2",

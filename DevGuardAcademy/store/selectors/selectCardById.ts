@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { Card, Deck, RootState } from '../types';
 
-const getDecks = (state: RootState) => state.decks;
+const getDecks = (state: RootState) => state.deckState;
 
 const getDeckId = (_: RootState, deckId: string) => deckId;
 
@@ -16,9 +16,9 @@ const defaultCard: Card = {
 
 export const selectCardById = createSelector(
   [getDecks, getDeckId, getCardId],
-  (decks, deckId, cardId) => {
+  (d, deckId, cardId) => {
     if (!cardId) return defaultCard;
-    const deck = decks.find((deck: Deck) => deck.id === deckId);
+    const deck = d.decks.find((deck: Deck) => deck.id === deckId);
     if (!deck) return defaultCard;
 
     return  deck.cards.find((card: Card) => card.id === cardId) ?? defaultCard;

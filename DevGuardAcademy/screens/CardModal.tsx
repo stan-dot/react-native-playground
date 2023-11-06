@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../store/hook";
-import { selectCardById } from "../store/reselect/selectCardById";
+import { selectCardById } from "../store/selectors/selectCardById";
 import { Card, RootState } from "../store/types";
 import { DetailsScreenParamList } from "./DetailsScreen";
-import { addCard, updateCard } from "../store/cardsSlice";
+import { addCard, updateCard } from "../store/slices/cardsSlice";
 
 type Props = {
   navigation: NativeStackNavigationProp<

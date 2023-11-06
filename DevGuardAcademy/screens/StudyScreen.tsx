@@ -3,10 +3,9 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, Text } from "@rneui/themed";
 import { View } from "react-native";
 import { HomeStackParamList } from "./HomeTab";
-import { selectDeckById } from "../store/reselect/selectDeckById";
+import { selectDeckById } from "../store/selectors/selectDeckById";
 import { useAppSelector } from "../store/hook";
 import StudyPanel from "../components/StudyPanel/StudyPanel";
-
 
 type Props = {
   navigation: NativeStackNavigationProp<HomeStackParamList, "Study">;
